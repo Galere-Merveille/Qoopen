@@ -1,14 +1,151 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quoopen</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    #logo {
+      width: 100px;
+      height: auto;
+    }
+    #search {
+      margin: 20px;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 5px;
+    }
+    #listings {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px;
+      margin: 20px;
+    }
+    .listing {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .listing img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    #pagination {
+      text-align: center;
+      margin: 20px;
+    }
+    #contact {
+      margin: 20px;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #duration {
+      text-align: center;
+    }
+    .duration-button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .duration-button:hover {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
 
-<h1>Spaces</h1>
-
-<div id="spaces">
-  <% @spaces.each do |space| %>
-    <%= render space %>
-    <p>
-      <%= link_to "Show this space", space %>
-    </p>
-  <% end %>
+<div id="header">
+  <a id="deposit" href="#">Déposez une annonce</a>
+  <img id="logo" src="logo.png" alt="Logo Quoopen">
 </div>
 
-<%= link_to "New space", new_space_path %>
+<div id="search">
+  <input type="text" placeholder="Recherche par métier...">
+  <input type="text" placeholder="Recherche par ville...">
+  <div id="duration">
+    <button class="duration-button">Jour</button>
+    <button class="duration-button">Semaine</button>
+    <button class="duration-button">Mois</button>
+  </div>
+</div>
+
+<div id="listings">
+  <div class="listing">
+    <img src="annonce1.jpg" alt="Annonce 1">
+    <div>Ville</div>
+    <div>Métier</div>
+    <div>Prix</div>
+  </div>
+  <div class="listing">
+    <img src="annonce2.jpg" alt="Annonce 2">
+    <div>Ville</div>
+    <div>Métier</div>
+    <div>Prix</div>
+  </div>
+  <div class="listing">
+    <img src="annonce3.jpg" alt="Annonce 3">
+    <div>Ville</div>
+    <div>Métier</div>
+    <div>Prix</div>
+  </div>
+  <div class="listing">
+    <img src="annonce4.jpg" alt="Annonce 4">
+    <div>Ville</div>
+    <div>Métier</div>
+    <div>Prix</div>
+  </div>
+</div>
+
+<div id="pagination">
+  <button>Précédent</button>
+  <button>Suivant</button>
+</div>
+
+<div id="contact">
+  <h2>Nous Contacter</h2>
+  <form>
+    <input type="text" placeholder="Nom">
+    <input type="email" placeholder="Email">
+    <input type="tel" placeholder="Téléphone">
+    <textarea placeholder="Message"></textarea>
+    <input type="submit" value="Envoyer">
+  </form>
+</div>
+
+</body>
+</html>
