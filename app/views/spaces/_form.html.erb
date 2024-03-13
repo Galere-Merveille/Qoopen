@@ -11,7 +11,7 @@
     <%= f.input :price_per_day %>
     <%= f.input :price_per_week %>
     <%= f.input :price_per_month %>
-    <%= f.association :user %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
 
   <div class="form-actions">

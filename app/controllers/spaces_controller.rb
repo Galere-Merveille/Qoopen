@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-  before_action :set_space, only: %i[ show edit update destroy ]
+  before_action :set_space, only: %i[show edit update destroy]
 
   # GET /spaces
   def index
@@ -24,9 +24,10 @@ class SpacesController < ApplicationController
   # POST /spaces
   def create
     @space = Space.new(space_params)
+    @space.user = current_user
 
-    if @space.save
-      redirect_to @space, notice: "Space was successfully created."
+    if @space.save!
+      redirect_to space_path(@space), notice: "Space was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -55,6 +56,6 @@ class SpacesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def space_params
-      params.require(:space).permit(:city, :address, :space_profession, :description, :price_per_day, :price_per_week, :price_per_month, :user_id)
+      params.require(:space).permit(:city, :address, :space_profession, :description, :price_per_day, :price_per_week, :price_per_month, photos: [])
     end
 end
