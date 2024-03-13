@@ -1,0 +1,55 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @space %>
+
+<div>
+  <%= link_to "Edit this space", edit_space_path(@space) %> |
+  <%= link_to "Back to spaces", root_path %>
+
+  <%= button_to "Destroy this space", @space, method: :delete %>
+</div>
+
+
+<h1>RESERVATIONS FAITES: </h1>
+
+<% @space.bookings.each do |booking| %>
+  <p>Début: <%= booking.start_date.strftime("%d" + "," + "%m" + "," + "%Y") %>  ---- Fin: <%= booking.end_date.strftime("%d" + "," + "%m" + "," + "%Y") %> </p>
+
+<% end %>
+
+<h1> BOOKINGS </h1>
+<%= simple_form_for [@space, @booking] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+
+<% @space.space_ratings.each do |sr| %>
+ <p>COMMENT :<%= sr.comment %>, RATING: <%= sr.rating %></p>
+
+<% end %>
+
+<h1> RATINGS </h1>
+<%= simple_form_for [@space, @space_rating] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
