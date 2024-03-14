@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: %i[ show edit update destroy ]
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   # GET /spaces
   def index
     @spaces = Space.all
