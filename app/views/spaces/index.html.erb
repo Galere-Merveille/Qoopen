@@ -10,22 +10,6 @@
       color: white;
       font-family: Arial, sans-serif;
     }
-    #header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-    #logo {
-      width: 100px;
-      height: auto;
-    }
-    #search {
-      margin: 20px;
-      padding: 10px;
-      background-color: #333;
-      border-radius: 5px;
-    }
     #listings {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -43,7 +27,7 @@
       border-radius: 5px;
     }
     #pagination {
-      text-align: center;
+      text-align: right;
       margin: 20px;
     }
     #contact {
@@ -82,6 +66,12 @@
       cursor: pointer;
       margin-right: 10px;
     }
+    .listing div {
+      color: white;
+    }
+    .listing div.ville {
+      color: green;
+    }
     .duration-button:hover {
       background-color: green;
     }
@@ -89,50 +79,18 @@
 </head>
 <body>
 
-<div id="header">
-  <a id="deposit" href="#">Déposez une annonce</a>
-  <img id="logo" src="logo.png" alt="Logo Quoopen">
-</div>
-
-<div id="search">
-  <input type="text" placeholder="Recherche par métier...">
-  <input type="text" placeholder="Recherche par ville...">
-  <div id="duration">
-    <button class="duration-button">Jour</button>
-    <button class="duration-button">Semaine</button>
-    <button class="duration-button">Mois</button>
-  </div>
-</div>
-
 <div id="listings">
-  <div class="listing">
-    <img src="annonce1.jpg" alt="Annonce 1">
-    <div>Ville</div>
-    <div>Métier</div>
-    <div>Prix</div>
-  </div>
-  <div class="listing">
-    <img src="annonce2.jpg" alt="Annonce 2">
-    <div>Ville</div>
-    <div>Métier</div>
-    <div>Prix</div>
-  </div>
-  <div class="listing">
-    <img src="annonce3.jpg" alt="Annonce 3">
-    <div>Ville</div>
-    <div>Métier</div>
-    <div>Prix</div>
-  </div>
-  <div class="listing">
-    <img src="annonce4.jpg" alt="Annonce 4">
-    <div>Ville</div>
-    <div>Métier</div>
-    <div>Prix</div>
-  </div>
+  <% (1..16).each do |i| %>
+    <div class="listing">
+      <img src="annonce<%= i %>.jpg" alt="Annonce <%= i %>">
+      <div class="ville">Ville <%= i %></div>
+      <div>Métier <%= i %></div>
+      <div>Prix <%= i %></div>
+    </div>
+  <% end %>
 </div>
 
 <div id="pagination">
-  <button>Précédent</button>
   <button>Suivant</button>
 </div>
 
