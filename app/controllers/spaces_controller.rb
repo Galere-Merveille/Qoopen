@@ -15,7 +15,7 @@ class SpacesController < ApplicationController
   end
 
   # GET /spaces/new
-  def news
+  def new
     @space = Space.new
   end
 
