@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: black;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +8,49 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 80px;
+}
+
+.navbar-lewagon .nav-link {
+  color: white;
+  text-decoration: underline;
+}
+
+.navbar-lewagon #search {
+  border-radius: 0 30px 30px 0;
+  border: none;
+  border-left: 1px black;
+  padding-right: 128px;
+  padding-bottom: 6px;
+}
+
+.navbar-lewagon #dropdownMenuButton1 {
+  margin-right: 1px;
+  padding-bottom: 4px;
+  padding-right: 5px;
+  border-radius: 30px 0 0 30px;
+}
+
+.navbar-lewagon #dropdownMenuButton1::after {
+  margin-left: 274px;
+}
+
+.navbar-lewagon .d-flex {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.navbar-lewagon .dropdown-menu {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.navbar-lewagon {
+  .dropdown-item {
+    border-radius: 20px;
+
+    &:hover {
+      color: grey;
+    }
+  }
 }
