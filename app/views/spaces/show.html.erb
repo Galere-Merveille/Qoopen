@@ -102,4 +102,23 @@
     <p>Début: <%= booking.start_date.strftime("%d" + "/" + "%m" + "/" + "%Y") %>  ---- Fin: <%= booking.end_date.strftime("%d" + "/" + "%m" + "/" + "%Y") %> </p>
   <% end %>
 
-</div>
+<h1> RATINGS </h1>
+<%= simple_form_for [@space, @space_rating] do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<!-- cloudinary -->
+<% @space.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+
