@@ -4,7 +4,45 @@
 
 <div id="spaces">
   <% @spaces.each do |space| %>
-    <%= render space %>
+      <p>
+        <strong>City:</strong>
+        <%= space.city %>
+      </p>
+
+      <p>
+        <strong>Address:</strong>
+        <%= space.address %>
+      </p>
+
+      <p>
+        <strong>Space profession:</strong>
+        <%= space.space_profession %>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= space.description %>
+      </p>
+
+      <p>
+        <strong>Price per day:</strong>
+        <%= space.price_per_day %>
+      </p>
+
+      <p>
+        <strong>Price per week:</strong>
+        <%= space.price_per_week %>
+      </p>
+
+      <p>
+        <strong>Price per month:</strong>
+        <%= space.price_per_month %>
+      </p>
+
+      <p>
+        <strong>User:</strong>
+        <%= space.user_id %>
+      </p>
     <p>
       <%= link_to "Show this space", space %>
     </p>
