@@ -1,55 +1,105 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+  <%= link_to "<< Retour aux espaces", root_path %>
 
-<%= render @space %>
+  <%= render @space %>
 
-<div>
-  <%= link_to "Edit this space", edit_space_path(@space) %> |
-  <%= link_to "Back to spaces", root_path %>
+  <div class="d-flex flex-row">
+    <div class="col-12 col-lg-8">
 
-  <%= button_to "Destroy this space", @space, method: :delete %>
+      <h3>Métier recherché</h3>
+      <p>
+        <%= @space.space_profession %>
+      </p>
+
+      <h3>Description</h3>
+      <p>
+        <%= @space.description %>
+      </p>
+
+      <h3>Tarifs</h3>
+      <div class="d-flex justify-content-between rounded">
+        <p>
+          <%= @space.price_per_day %>€/jour
+        </p>
+
+        <p>
+          <%= @space.price_per_week %>€/semaine
+        </p>
+
+        <p>
+          <%= @space.price_per_month %>€/mois
+        </p>
+      </div>
+
+      <p>
+        <strong>User:</strong>
+        <%= @space.user_id %>
+      </p>
+      <div>
+        <%= link_to "Edit this space", edit_space_path(@space), class:"btn btn-outline-secondary" %>
+        <%= link_to "Destroy this space", @space, method: :delete, class:"btn btn-outline-danger" %>
+      </div>
+    </div>
+
+
+    <div class="col-12 col-lg-4">
+      <div class="form-wrapper">
+        <h2> Réservez votre espace </h2>
+        <%= simple_form_for [@space, @booking] do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <div class="form-inputs">
+            <%= f.input :start_date,
+                  label: "Sélectionnez vos dates",
+                  as: :string,
+                  required: false,
+                  input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :end_date,
+                  label: false,
+                  as: :string,
+                  required: false,
+                  input_html: { data: { controller: "datepicker" } } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, class:"btn btn-dark" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <% @space.space_ratings.each do |sr| %>
+  <p>COMMENT :<%= sr.comment %>, RATING: <%= sr.rating %></p>
+
+  <% end %>
+
+  <h1> RATINGS </h1>
+  <%= simple_form_for [@space, @space_rating] do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :comment %>
+      <%= f.input :rating %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+  <h1>RESERVATIONS FAITES: </h1>
+
+  <% @space.bookings.each do |booking| %>
+    <p>Début: <%= booking.start_date.strftime("%d" + "/" + "%m" + "/" + "%Y") %>  ---- Fin: <%= booking.end_date.strftime("%d" + "/" + "%m" + "/" + "%Y") %> </p>
+  <% end %>
+
 </div>
-
-
-<h1>RESERVATIONS FAITES: </h1>
-
-<% @space.bookings.each do |booking| %>
-  <p>Début: <%= booking.start_date.strftime("%d" + "," + "%m" + "," + "%Y") %>  ---- Fin: <%= booking.end_date.strftime("%d" + "," + "%m" + "," + "%Y") %> </p>
-
-<% end %>
-
-<h1> BOOKINGS </h1>
-<%= simple_form_for [@space, @booking] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
-
-
-
-<% @space.space_ratings.each do |sr| %>
- <p>COMMENT :<%= sr.comment %>, RATING: <%= sr.rating %></p>
-
-<% end %>
-
-<h1> RATINGS </h1>
-<%= simple_form_for [@space, @space_rating] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :comment %>
-    <%= f.input :rating %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>

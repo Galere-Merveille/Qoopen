@@ -10,10 +10,12 @@ class SpacesController < ApplicationController
   def show
     @booking = Booking.new
     @space_rating = SpaceRating.new
+    @marker = { lat: @space.latitude, lng: @space.longitude }
+    # raise
   end
 
   # GET /spaces/new
-  def new
+  def news
     @space = Space.new
   end
 
