@@ -77,18 +77,20 @@
     }
   </style>
 </head>
+  
 <body>
 
 <div id="listings">
-  <% (1..16).each do |i| %>
+  <% @spaces.each do |space| %>
     <div class="listing">
       <img src="annonce<%= i %>.jpg" alt="Annonce <%= i %>">
-      <div class="ville">Ville <%= i %></div>
-      <div>Métier <%= i %></div>
-      <div>Prix <%= i %></div>
+      <div class="ville"><%= space.city %></div>
+      <div><%= space.space_profession %></div>
+      <div><%= space.price_per_day %>€/jour</div>
+      <p>
+        <%= link_to "Show this space", space %>
+      </p>
     </div>
-  <% end %>
-</div>
 
 <div id="pagination">
   <button>Suivant</button>
