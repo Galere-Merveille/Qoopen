@@ -1,4 +1,33 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+ <!-- Filtres -->
+    <%= form_tag("/filter", method: "get") do %>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <div class="form-check">
+            <%= check_box_tag "filter[day]", "1", params.dig(:filter, :day) == "1", class: "form-check-input", id: "day-checkbox" %>
+            <%= label_tag "day-checkbox", "Jour", class: "form-check-label" %>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="form-check">
+            <%= check_box_tag "filter[month]", "1", params.dig(:filter, :month) == "1", class: "form-check-input", id: "month-checkbox" %>
+            <%= label_tag "month-checkbox", "Semaine", class: "form-check-label" %>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="form-check">
+            <%= check_box_tag "filter[week]", "1", params.dig(:filter, :week) == "1", class: "form-check-input", id: "week-checkbox" %>
+            <%= label_tag "week-checkbox", "Mois", class: "form-check-label" %>
+          </div>
+        </div>
+        <div class="col-auto">
+          <%= submit_tag "Apply Filter", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
 
 <h1>Spaces</h1>
 
@@ -47,6 +76,6 @@
       <%= link_to "Show this space", space %>
     </p>
   <% end %>
+ </div>
 </div>
-
 <%= link_to "New space", new_space_path %>
