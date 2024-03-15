@@ -38,7 +38,7 @@
       </p>
       <div>
         <%= link_to "Edit this space", edit_space_path(@space), class:"btn btn-outline-secondary" %>
-        <%= link_to "Destroy this space", @space, method: :delete, class:"btn btn-outline-danger" %>
+        <%= link_to "Destroy this space", root_path, class: "btn btn-outline-danger", remote: true, data: { confirm: "Are you sure?", turbo_method: :delete } %>
       </div>
     </div>
 
@@ -121,4 +121,3 @@
 <% @space.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
-
