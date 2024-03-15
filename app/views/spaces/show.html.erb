@@ -23,11 +23,12 @@
 
       <h3>Tarifs</h3>
       <div class="tarifs">
-        <p>
-         <div data-date-target="price">•<%= @space.price_per_day %>€/jour</div> •<%= @space.price_per_week %> €/semaine <Br > •<%= @space.price_per_month %>€/mois
-        </p>
+      <ul>
+          <li data-date-target="price"><%= @space.price_per_day %>€/jour</li>
+          <li><%= @space.price_per_week %> €/semaine</li>
+          <li><%= @space.price_per_month %>€/mois</li>
       </div>
-
+      </ul>
 
       <% @space.space_ratings.each do |sr| %>
       <div class="card mt-3" style="width: 18rem;">

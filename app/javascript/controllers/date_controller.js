@@ -5,9 +5,8 @@ export default class extends Controller {
   static targets = ["price", "startDate", "endDate", "totalPrice"];
   connect() {}
   total() {
-    console.log("test");
     const price = parseInt(this.priceTarget.innerHTML, 10);
-    console.log(price);
+
     const startDay = parseInt(this.startDateTarget.value.split("-")[2], 10);
 
     const endDay = parseInt(this.endDateTarget.value.split("-")[2], 10);
