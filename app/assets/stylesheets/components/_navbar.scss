@@ -7,32 +7,40 @@
   flex-grow: 0;
 }
 
+.navbar-lewagon .form-control {
+  border-radius: 0 30px 30px 0;
+  border: none;
+  margin: auto;
+  padding-right: 86px;
+}
+
 .navbar-lewagon .navbar-brand img {
-  width: 80px;
+  border: none;
+  width: 184px;
+  margin-left: -5px;
+  margin-bottom: -3px;
+  background-color: transparent;
 }
 
 .navbar-lewagon .nav-link {
   color: white;
   text-decoration: underline;
+  margin-right: 20px;
 }
 
 .navbar-lewagon #search {
   border-radius: 0 30px 30px 0;
   border: none;
-  border-left: 1px black;
-  padding-right: 128px;
-  padding-bottom: 6px;
 }
 
-.navbar-lewagon #dropdownMenuButton1 {
+.navbar-lewagon .form-select {
   margin-right: 1px;
   padding-bottom: 4px;
-  padding-right: 5px;
+  padding-right: 150px;
   border-radius: 30px 0 0 30px;
-}
-
-.navbar-lewagon #dropdownMenuButton1::after {
-  margin-left: 274px;
+  width: 100%;
+  margin-bottom: 1px;
+  margin-top: 1px;
 }
 
 .navbar-lewagon .d-flex {
@@ -47,10 +55,22 @@
 
 .navbar-lewagon {
   .dropdown-item {
+    display: block;
     border-radius: 20px;
+    width: 100%;
+    text-align: inherit;
 
     &:hover {
       color: grey;
     }
   }
+}
+.navbar-lewagon #connexion {
+  margin-right: -10px;
+  width: 212px;
+  border-radius: 5px;
+}
+
+.navbar-lewagon .form-check-label {
+  color: white;
 }

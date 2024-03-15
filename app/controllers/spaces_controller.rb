@@ -5,6 +5,9 @@ class SpacesController < ApplicationController
   # GET /spaces
   def index
     @spaces = Space.all
+    if params[:query].present?
+      @spaces = @spaces.search_by_city_and_address(params[:query])
+    end
   end
 
   # GET /spaces/1
@@ -52,13 +55,14 @@ class SpacesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_space
-      @space = Space.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def space_params
-      params.require(:space).permit(:city, :address, :space_profession, :description, :price_per_day, :price_per_week, :price_per_month, photos: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_space
+    @space = Space.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def space_params
+    params.require(:space).permit(:city, :address, :space_profession, :description, :price_per_day, :price_per_week, :price_per_month, photos: [])
+  end
 end
