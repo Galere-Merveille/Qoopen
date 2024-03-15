@@ -1,111 +1,40 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quoopen</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-    #listings {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: 20px;
-      margin: 20px;
-    }
-    .listing {
-      background-color: #222;
-      padding: 20px;
-      border-radius: 5px;
-    }
-    .listing img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-    }
-    #pagination {
-      text-align: right;
-      margin: 20px;
-    }
-    #contact {
-      margin: 20px;
-      padding: 20px;
-      background-color: #333;
-      border-radius: 5px;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-    input[type="submit"] {
-      padding: 10px 20px;
-      background-color: green;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #duration {
-      text-align: center;
-    }
-    .duration-button {
-      padding: 10px 20px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-    .listing div {
-      color: white;
-    }
-    .listing div.ville {
-      color: green;
-    }
-    .duration-button:hover {
-      background-color: green;
-    }
-  </style>
-</head>
-  
-<body>
+<p style="color: green"><%= notice %></p>
+<div class="container">
 
-<div id="listings">
-  <% @spaces.each do |space| %>
-    <div class="listing">
-      <img src="annonce<%= i %>.jpg" alt="Annonce <%= i %>">
-      <div class="ville"><%= space.city %></div>
-      <div><%= space.space_profession %></div>
-      <div><%= space.price_per_day %>€/jour</div>
-      <p>
-        <%= link_to "Show this space", space %>
-      </p>
-    </div>
+  <div class="d-flex justify-content-between align-self-center">
+    <h1>Spaces</h1>
+    <%= link_to "New space", new_space_path, class:"btn btn-primary"%>
+  </div>
 
-<div id="pagination">
-  <button>Suivant</button>
+  <div id="spaces">
+    <% @spaces.each do |space| %>
+      <%= link_to space, :action => 'go' do %>
+        <div class="card-spaces">
+          <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
+          <div class="card-title mt-2">
+            <strong><%= space.city %></strong>
+          </div>
+          <div class="card-content d-flex justify-content-between">
+            <p>
+              <%= space.space_profession %>
+            </p>
+            <p>
+              <strong><%= space.price_per_day %> €/jour</strong>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="contact">
+    <h2>Nous Contacter</h2>
+    <form>
+      <input type="text" placeholder="Nom">
+      <input type="email" placeholder="Email">
+      <input type="tel" placeholder="Téléphone">
+      <textarea placeholder="Message"></textarea>
+      <input type="submit" value="Envoyer">
+    </form>
+  </div>
 </div>
-
-<div id="contact">
-  <h2>Nous Contacter</h2>
-  <form>
-    <input type="text" placeholder="Nom">
-    <input type="email" placeholder="Email">
-    <input type="tel" placeholder="Téléphone">
-    <textarea placeholder="Message"></textarea>
-    <input type="submit" value="Envoyer">
-  </form>
-</div>
-
-</body>
-</html>

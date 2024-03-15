@@ -1,2 +1,57 @@
 // Import page-specific CSS files here.
 @import "home";
+
+#spaces {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+.card-spaces {
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.listing-img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  color: #69f701;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-content {
+  color: white;
+}
+
+#contact {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+}
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: $quoogreen;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

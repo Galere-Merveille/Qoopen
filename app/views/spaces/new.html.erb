@@ -1,11 +1,7 @@
 <div class="container">
-  <h1>New space</h1>
-
-  <%= render "form", space: @space %>
-
-  <br>
-
-  <div>
-    <%= link_to "Back to spaces", spaces_path %>
+  <%= link_to "<< Retour aux espaces", root_path, class:"mt-2" %>
+  <div class="mt-3">
+    <h1>Décrivez nous votre espace</h1>
+    <%= render "form", space: @space %>
   </div>
 </div>
