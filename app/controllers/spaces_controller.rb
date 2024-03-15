@@ -32,7 +32,7 @@ class SpacesController < ApplicationController
     @space = Space.new(space_params)
     @space.user = current_user
 
-    if @space.save!
+    if @space.save
       redirect_to space_path(@space), notice: "Space was successfully created."
     else
       render :new, status: :unprocessable_entity

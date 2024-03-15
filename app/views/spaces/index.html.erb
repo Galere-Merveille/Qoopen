@@ -1,5 +1,6 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
+
  <!-- Filtres -->
     <%= form_tag("/filter", method: "get") do %>
       <div class="row justify-content-center">
@@ -29,53 +30,41 @@
       </div>
     <% end %>
 
-<h1>Spaces</h1>
 
-<div id="spaces">
-  <% @spaces.each do |space| %>
-      <p>
-        <strong>City:</strong>
-        <%= space.city %>
-      </p>
+  <div class="d-flex justify-content-between align-self-center">
+    <h1>Spaces</h1>
+    <%= link_to "New space", new_space_path, class:"btn btn-primary"%>
+  </div>
 
-      <p>
-        <strong>Address:</strong>
-        <%= space.address %>
-      </p>
+  <div id="spaces">
+    <% @spaces.each do |space| %>
+      <%= link_to space, :action => 'go' do %>
+        <div class="card-spaces">
+          <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
+          <div class="card-title mt-2">
+            <strong><%= space.city %></strong>
+          </div>
+          <div class="card-content d-flex justify-content-between">
+            <p>
+              <%= space.space_profession %>
+            </p>
+            <p>
+              <strong><%= space.price_per_day %> €/jour</strong>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-      <p>
-        <strong>Space profession:</strong>
-        <%= space.space_profession %>
-      </p>
-
-      <p>
-        <strong>Description:</strong>
-        <%= space.description %>
-      </p>
-
-      <p>
-        <strong>Price per day:</strong>
-        <%= space.price_per_day %>
-      </p>
-
-      <p>
-        <strong>Price per week:</strong>
-        <%= space.price_per_week %>
-      </p>
-
-      <p>
-        <strong>Price per month:</strong>
-        <%= space.price_per_month %>
-      </p>
-
-      <p>
-        <strong>User:</strong>
-        <%= space.user_id %>
-      </p>
-    <p>
-      <%= link_to "Show this space", space %>
-    </p>
-  <% end %>
- </div>
-<%= link_to "New space", new_space_path %>
+  <div id="contact">
+    <h2>Nous Contacter</h2>
+    <form>
+      <input type="text" placeholder="Nom">
+      <input type="email" placeholder="Email">
+      <input type="tel" placeholder="Téléphone">
+      <textarea placeholder="Message"></textarea>
+      <input type="submit" value="Envoyer">
+    </form>
+  </div>
 </div>
