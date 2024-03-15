@@ -5,6 +5,7 @@
     <div class="button">
       <%= link_to "Edit this space", edit_space_path(@space), class:"btn btn-outline-secondary" %>
       <%= link_to "Destroy this space", space_path(@space), class: "btn btn-outline-danger", remote: true, data: { turbo_confirm: "Êtes vous sur ?", turbo_method: :delete } %>
+
     </div>
   </div>
 

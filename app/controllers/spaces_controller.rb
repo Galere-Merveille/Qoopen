@@ -50,7 +50,7 @@ class SpacesController < ApplicationController
 
   # DELETE /spaces/1
   def destroy
-    @space.destroy!
+    @space.destroy
     redirect_to root_path, notice: "Space was successfully destroyed.", status: :see_other
   end
 
