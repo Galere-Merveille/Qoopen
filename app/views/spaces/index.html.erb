@@ -3,7 +3,7 @@
 
  <!-- Filtres -->
     <%= form_tag("/filter", method: "get") do %>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center date-filter">
         <div class="col-auto">
           <div class="form-check">
             <%= check_box_tag "filter[day]", "1", params.dig(:filter, :day) == "1", class: "form-check-input", id: "day-checkbox" %>
@@ -31,14 +31,13 @@
     <% end %>
 
 
-  <div class="d-flex justify-content-between align-self-center">
-    <h1>Spaces</h1>
-    <%= link_to "New space", new_space_path, class:"btn btn-primary"%>
+  <div class="space-title">
+    <h2>Nos espaces</h2>
   </div>
 
   <div id="spaces">
     <% @spaces.each do |space| %>
-      <%= link_to space, :action => 'go' do %>
+      <%= link_to space_path(space) do %>
         <div class="card-spaces">
           <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
           <div class="card-title mt-2">
