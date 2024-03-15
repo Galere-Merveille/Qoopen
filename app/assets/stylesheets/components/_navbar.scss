@@ -13,6 +13,7 @@
   margin: auto;
   padding-right: 86px;
   padding-bottom: 9px;
+  padding-top: 9px;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -74,4 +75,9 @@
 
 .navbar-lewagon .form-check-label {
   color: white;
+}
+
+.navbar-lewagon #rechercher {
+  border-radius: 40px;
+  margin-left: 5px;
 }
