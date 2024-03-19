@@ -8,7 +8,7 @@
 
   <!-- Métier dropdown -->
   <div>
-      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= form_with url: search_results_path, method: :get, class: "d-flex" do %>
       <select class="form-select" aria-label="Métier" name="profession">
         <option selected>Profession</option>
         <option value="1">Coiffure</option>
@@ -33,15 +33,20 @@
           <li class="nav-item active">
             <%= link_to "Déposer une annonce", new_space_path, class: "nav-link" %>
           </li>
+           <li class="nav-item active">
+            <%= link_to "Mode owner", owner_dashboards_path, class: "nav-link" %>
+          </li>
 
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
             </a>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <%= link_to "", "#", class: "dropdown-item" %>
-        <%= link_to "Nom utilisateur", "#", class: "dropdown-item" %>
-        <%= link_to "Tableau de bord", "#", class: "dropdown-item" %>
+        <%= link_to "Tableau de bord", dashboards_path, class: "dropdown-item" %>
+        <%= link_to "Réservations", bookings_dashboards_path, class: "dropdown-item" %>
+        <%= link_to "Favoris", favoris_dashboards_path, class: "dropdown-item" %>
+        <%= link_to "Gérer mes annonces", owner_dashboards_path, class: "dropdown-item" %>
+        <%= link_to "Profil", infos_dashboards_path, class: "dropdown-item" %>
         <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
       </div>
           </li>

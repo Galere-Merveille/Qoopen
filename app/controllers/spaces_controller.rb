@@ -5,6 +5,10 @@ class SpacesController < ApplicationController
   # GET /spaces
   def index
     @spaces = Space.all
+  end
+
+  def results
+    @spaces = Space.all
     if params[:query].present?
       @spaces = @spaces.search_by_city_and_address(params[:query])
     end
