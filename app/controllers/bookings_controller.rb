@@ -4,20 +4,18 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.space = @space
     @booking.user = current_user
-    if @booking.save!
-      duration = (@booking.end_date - @booking.start_date).to_i
-      total_price = (@space.price_per_day * duration) / 86_400
-      @booking.update!(total_amount: total_price)
-      redirect_to space_path(@space)
-      flash[:alert] = "Tu as bien réservé"
-    else
-      render "spaces/show", status: :unprocessable_entity
+    array_of_days = params["booking"]["total_amount"].split(", ")
+    array_of_days.each do |day|
+      date = Date.parse(day)
+      booking_date = BookingDate.create(selected_day: date)
+      booking_date.booking = @booking
+      booking_date.save
     end
   end
-
+  #  calculate price à partir de @booking.booking_date
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:status)
   end
 end

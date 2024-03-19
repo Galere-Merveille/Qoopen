@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :spaces, except: :index do
     resources :bookings, only: :create
     resources :space_ratings, only: :create
+    resources :booking_dates, only: [:new, :create]
   end
 
   resources :dashboards, only: :index do

@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :space
-  has_many :booking_date
+  has_many :booking_dates
 end
