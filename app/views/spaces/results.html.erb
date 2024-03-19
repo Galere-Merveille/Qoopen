@@ -1,0 +1,69 @@
+<p style="color: green"><%= notice %></p>
+<div class="container">
+
+ <!-- Filtres -->
+    <%= form_tag("/filter", method: "get") do %>
+      <div class="row justify-content-center date-filter">
+        <div class="col-auto">
+          <div class="form-check">
+            <%= check_box_tag "filter[day]", "1", params.dig(:filter, :day) == "1", class: "form-check-input", id: "day-checkbox" %>
+            <%= label_tag "day-checkbox", "Jour", class: "form-check-label" %>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="form-check">
+            <%= check_box_tag "filter[month]", "1", params.dig(:filter, :month) == "1", class: "form-check-input", id: "month-checkbox" %>
+            <%= label_tag "month-checkbox", "Semaine", class: "form-check-label" %>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="form-check">
+            <%= check_box_tag "filter[week]", "1", params.dig(:filter, :week) == "1", class: "form-check-input", id: "week-checkbox" %>
+            <%= label_tag "week-checkbox", "Mois", class: "form-check-label" %>
+          </div>
+        </div>
+        <div class="col-auto">
+          <%= submit_tag "Apply Filter", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+
+
+  <div class="space-title">
+    <h2>Nos espaces</h2>
+  </div>
+
+  <div id="spaces">
+    <% @spaces.each do |space| %>
+      <%= link_to space_path(space) do %>
+        <div class="card-spaces">
+          <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
+          <div class="card-title mt-2">
+            <strong><%= space.city %></strong>
+          </div>
+          <div class="card-content d-flex justify-content-between">
+            <p>
+              <%= space.space_profession %>
+            </p>
+            <p>
+              <strong><%= space.price_per_day %> €/jour</strong>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="contact">
+    <h2>Nous Contacter</h2>
+    <form>
+      <input type="text" placeholder="Nom">
+      <input type="email" placeholder="Email">
+      <input type="tel" placeholder="Téléphone">
+      <textarea placeholder="Message"></textarea>
+      <input type="submit" value="Envoyer">
+    </form>
+  </div>
+</div>
