@@ -19,6 +19,8 @@ class SpacesController < ApplicationController
     @booking = Booking.new
     @space_rating = SpaceRating.new
     @marker = { lat: @space.latitude, lng: @space.longitude }
+    @bookings = @space.bookings
+    @booking_date = BookingDate.new
     # raise
   end
 
