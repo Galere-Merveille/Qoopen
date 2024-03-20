@@ -1,6 +1,6 @@
-// import { Controller } from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus";
 
-// // Connects to data-controller="date"
+// Connects to data-controller="date"
 // export default class extends Controller {
 //   static targets = ["price", "date", "totalPrice"];
 //   connect() {}

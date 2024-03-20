@@ -4,10 +4,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.space = @space
     @booking.user = current_user
-
     selected_day_str = params.dig("booking", "booking_dates_attributes", "0", "selected_day")
     array_of_days = selected_day_str.split(", ") if selected_day_str
-
     array_of_days.each do |day|
       date = Date.parse(day)
       booking_date = BookingDate.create(selected_day: date)
