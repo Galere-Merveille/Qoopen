@@ -7,6 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+BookingDate.destroy_all if Rails.env.development?
+SpaceRating.destroy_all if Rails.env.development?
+Booking.destroy_all if Rails.env.development?
 User.destroy_all if Rails.env.development?
 Space.destroy_all if Rails.env.development?
 
