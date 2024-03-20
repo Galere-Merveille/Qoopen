@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :spaces, dependent: :destroy
   has_many :space_ratings
+  has_many :booking_dates
 end
