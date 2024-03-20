@@ -8,6 +8,7 @@ export default class extends Controller {
     flatpickr(this.element, {
       mode: "multiple",
       dateFormat: "Y-m-d",
+      inline: true,
     });
   }
 }
