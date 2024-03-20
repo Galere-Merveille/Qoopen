@@ -6,25 +6,27 @@ class BookingDatesController < ApplicationController
     array_of_days = selected_day_str.split(", ") if selected_day_str
     array_of_days.each do |day|
       date = Date.parse(day)
-      booking_date = BookingDate.create(booking_date_params)
-      booking_date.user_id = current_user.id
-      booking_date.space_id = @space.id
+      booking_date = BookingDate.create(selected_day: date, user_id: current_user.id, space_id: @space.id)
       booking_date.save
     end
 
-    hash_of_periods = count_periods(array_of_days)
-    total_amount = (hash_of_periods[:months] * @space.price_per_month) + (hash_of_periods[:weeks] * @space.price_per_week) + (hash_of_periods[:isolated_days] * @space.price_per_day)
+    booking_dates = @space.booking_dates.where(user: current_user).pluck(:selected_day)
 
-    # @booking.total_amount = total_amount
+    hash_of_periods = count_periods(booking_dates)
 
-    redirect_to space_path(@space)
+    number_of_months = hash_of_periods[:months]
+    number_of_weeks = hash_of_periods[:weeks]
+    number_of_isolated_days = hash_of_periods[:isolated_days]
+    total_amount = number_of_months * @space.price_per_month + number_of_weeks * @space.price_per_week + number_of_isolated_days * @space.price_per_day
+
+    redirect_to space_path(@space, number_of_months: number_of_months, number_of_weeks: number_of_weeks, number_of_isolated_days: number_of_isolated_days, total_amount: total_amount)
   end
 
   private
 
-  def count_periods(dates_str)
+  def count_periods(dates)
     # Conversion et tri des dates
-    dates = dates_str.map { |date_str| Date.parse(date_str) }.sort
+    dates = dates.sort
 
     months_count = 0
     weeks_count = 0

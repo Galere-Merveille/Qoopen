@@ -22,7 +22,14 @@ class SpacesController < ApplicationController
     @marker = { lat: @space.latitude, lng: @space.longitude }
     @bookings = @space.bookings
     @booking_date = BookingDate.new
-    # raise
+
+    @booking_dates = @space.booking_dates.where(user: current_user)
+    @booking_dates_ids = @space.booking_dates.where(user: current_user).pluck(:id)
+
+    @number_of_months = params[:number_of_months].to_i if params[:number_of_months]
+    @number_of_weeks = params[:number_of_weeks].to_i if params[:number_of_weeks]
+    @number_of_isolated_days = params[:number_of_isolated_days].to_i if params[:number_of_isolated_days]
+    @total_amount = params[:total_amount].to_i if params[:total_amount]
   end
 
   # GET /spaces/new
