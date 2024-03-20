@@ -17,6 +17,7 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   def show
     @booking = Booking.new
+    @booking.booking_dates.build
     @space_rating = SpaceRating.new
     @marker = { lat: @space.latitude, lng: @space.longitude }
     @bookings = @space.bookings
