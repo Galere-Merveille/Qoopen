@@ -2,14 +2,9 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :space
   has_many :booking_dates
+  accepts_nested_attributes_for :booking_dates
 
-  # def self.calculate_total_amount
-  #   #todo: calculate total_amount
-  #   booking_dates.sum(total)
-  #   return results
-  # end
-
-  # def total_booking_with_calculated_amount
-  #   where.not(total_amount:  nil)
-  # end
+  # def calculate_total_amount
+  #   total = 0
+  #   duration_in_days = (self.booking_date.max.to_date - self.booking_date.min.to_date).to_i + 1
 end

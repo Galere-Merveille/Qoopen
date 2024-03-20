@@ -18,7 +18,7 @@
   </div>
 
 
-  <div class="d-flex flex-row" data-controller="date">
+  <div class="d-flex flex-row">
     <div class="col-12 col-lg-8 me-5">
       <%= render @space %>
       <div class="mt-4">
@@ -68,9 +68,9 @@
         <% end %>
       </div>
       <div class="detail-resa mt-3" data-date-target="price">
-        <p> Nbre de jours * <%= @space.price_per_day %>€HT </p>
-        <p> Nbre de semaines * <%= @space.price_per_week %>€HT </p>
-        <p> Nbre de mois * <%= @space.price_per_month %>€HT </p>
+        <p> <%=  %> Nbre de jours * <%= @space.price_per_day %>€HT </p>
+        <p> <%=  %> Nbre de semaines * <%= @space.price_per_week %>€HT </p>
+        <p> <%=  %> Nbre de mois * <%= @space.price_per_month %>€HT </p>
       </div>
       <div class="detail-resa">
         <h3> Détails prix </h3>
