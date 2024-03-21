@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: black;
+  background: rgb(33, 37, 41);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,7 +8,7 @@
 }
 
 .navbar-lewagon .form-control {
-  border-radius: 0 30px 30px 0;
+  border-radius: 0 0px 0px 0;
   border: none;
   margin: auto;
   padding-right: 86px;
@@ -79,4 +79,15 @@
 .navbar-lewagon #rechercher {
   border-radius: 40px;
   margin-left: 5px;
+}
+
+.navbar-lewagon #durée {
+  border-radius: 0px 30px 30px 0px;
+  border: none;
+  margin: auto;
+  padding-right: 45px;
+  padding-bottom: 9px;
+  padding-top: 12px;
+  border-left: 1px solid black;
+  color: #4c5056;
 }

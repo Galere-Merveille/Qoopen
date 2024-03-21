@@ -51,7 +51,7 @@
                   input_html: { autocomplete: "siret_number" }%>
       <%= f.label :user_profession, "Sélectionner une profession :" %>
       <%= f.select :user_profession,
-                  options_for_select(['Coiffure', 'Esthétique', 'Barbier', 'Cuisine', 'Autres']),
+                  options_for_select(['Coiffure', 'Esthétique', 'Barbier']),
                   { include_blank: '' },
                   required: true,
                   class: 'form-control' %><br >
