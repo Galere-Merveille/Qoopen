@@ -62,27 +62,42 @@
           <h3> Votre réservation </h3>
         </div>
         <div class="detail-resa mt-3">
+          <p><strong> Dates à réserver </strong></p>
           <% @selected_days.each do |day| %>
             <p>Le <%= day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
           <% end %>
         </div>
-        <div class="detail-resa mt-3" data-date-target="price">
+        <div class="detail-resa mt-3">
           <p><strong> Tarifs </strong></p>
-          <div class="container" style="display: flex; justify-content: space-between;">
-            <p> <%= @number_of_isolated_days %> jours x <%= @space.price_per_day %>€HT = </p>
+          <div class="d-flex justify-content-between">
+            <p> Par jour : <%= @space.price_per_day %>€ x <%= @number_of_isolated_days %></p>
             <p> <%= @number_of_isolated_days * @space.price_per_day %>€HT </p>
           </div>
-          <p> <%= @number_of_weeks %> semaines x <%= @space.price_per_week %>€HT = <%= @number_of_weeks * @space.price_per_week %>€HT </p>
-          <p> <%= @number_of_months %> mois x <%= @space.price_per_month %>€HT = <%= @number_of_weeks * @space.price_per_week %>€HT </p>
-        </div>
-        <div class="detail-resa">
-          <p><strong> Détails prix </strong></p>
-          <p> Total location : <%= @total_amount %>€HT </p>
-          <p> Frais de service : <%= @total_amount * 0.1 %>€HT </p>
-          <p> Taxes : X€HT </p>
+          <div class="d-flex justify-content-between">
+            <p> Par semaine : <%= @space.price_per_week %>€ x <%= @number_of_weeks %></p>
+            <p> <%= @number_of_weeks * @space.price_per_week %>€HT </p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p> Par mois : <%= @space.price_per_month %>€ x <%= @number_of_months %></p>
+            <p> <%= @number_of_months * @space.price_per_month %>€HT </p>
+          </div>
         </div>
         <div class="detail-resa mt-3">
-          <p><strong> TOTAL <%= @total_amount %>€HT </strong></p>
+          <p><strong> Détails prix </strong></p>
+          <div class="d-flex justify-content-between">
+            <p> Total location </p>
+            <p> <%= @total_amount %>€HT </p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p> Frais de service </p>
+            <p> <%= (@total_amount * 0.10).to_i %>€HT </p>
+          </div>
+        </div>
+        <div class="detail-resa mt-3">
+          <div class="d-flex justify-content-between">
+          <p><strong> TOTAL </strong></p>
+          <p><strong> <%= (@total_amount + (@total_amount * 0.10)).to_i %>€HT </strong></p>
+          </div>
         </div class="mt-3">
           <%= simple_form_for @booking, url: space_bookings_path(@space), method: :post do |form| %>
             <%= form.submit "Valider Ma Commande" , class:"mt-3" %>

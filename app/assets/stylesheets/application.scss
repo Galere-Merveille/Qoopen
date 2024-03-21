@@ -9,7 +9,8 @@
 
 // Your CSS partials
 @import "components/index";
-@import "pages/index";
+@import "spaces/index";
+@import "dashboard/bookings";
 
 body {
   background: rgb(35, 37, 41);
