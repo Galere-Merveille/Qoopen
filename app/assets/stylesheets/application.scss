@@ -12,7 +12,12 @@
 @import "pages/index";
 
 body {
-  background-color: black;
+  background: rgb(35, 37, 41);
+  background: linear-gradient(
+    180deg,
+    rgba(35, 37, 41, 1) 11%,
+    rgba(251, 250, 248, 1) 83%
+  );
   color: white;
 }
 
