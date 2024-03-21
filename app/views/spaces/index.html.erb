@@ -41,7 +41,7 @@
         <div class="card-spaces">
           <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
           <div class="card-title mt-2">
-            <strong><%= space.city %></strong>
+            <%= space.city %>
           </div>
           <div class="card-content d-flex justify-content-between">
             <p>

@@ -3,13 +3,13 @@
   <div id="carouselExample" class="carousel slide" style="width: 100%; height: 500px;">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <%= cl_image_tag @space.photos.first.key, crop: :fill, style: "width: 100%;" %>
+        <%= cl_image_tag @space.photos.first.key, crop: :fill, style: "width: 100%; height: 500px; object-fit: cover;" %>
       </div>
       <div class="carousel-item">
-        <%= cl_image_tag @space.photos.second.key, crop: :fill, style: "width: 100%;" %>
+        <%= cl_image_tag @space.photos.second.key, crop: :fill, style: "width: 100%; height: 500px; object-fit: cover;" %>
       </div>
       <div class="carousel-item">
-        <%= cl_image_tag @space.photos.last.key, crop: :fill, style: "width: 100%;" %>
+        <%= cl_image_tag @space.photos.last.key, crop: :fill, style: "width: 100%; height: 500px; object-fit: cover;" %>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
