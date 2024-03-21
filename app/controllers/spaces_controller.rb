@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :results]
 
   # GET /spaces
   def index
@@ -11,6 +11,10 @@ class SpacesController < ApplicationController
     @spaces = Space.all
     if params[:query].present?
       @spaces = @spaces.search_by_city_and_address(params[:query])
+    end
+
+    if params[:space_profession].present?
+      @spaces = @spaces.where(space_profession: params[:space_profession])
     end
   end
 
