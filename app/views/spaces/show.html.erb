@@ -47,13 +47,13 @@
       <div class="booking-wrapper text-secondary">
         <h3>Sélectionner vos dates</h3>
         <%= simple_form_for [@space, @booking_date] do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <%= f.input :selected_day, as: :string,
-                                required: false,
-                                label: "Dates de réservation",
-                                input_html: { class: "datepicker", data: { controller: "datepicker" }, style: "display: none;" } %>
-        <%= f.button :submit, "Ajouter à votre réservation", class: "btn btn-primary" %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= f.input :selected_day, as: :string,
+                                  required: false,
+                                  label: "Dates de réservation",
+                                  input_html: { class: "datepicker", data: { controller: "datepicker" }, style: "display: none;" } %>
+          <%= f.button :submit, "Ajouter à votre réservation", class: "btn btn-primary" %>
         <% end %>
       </div>
       <div class="booking-wrapper text-secondary mt-3">
@@ -61,25 +61,29 @@
         <h3><strong> Votre réservation </strong></h3>
       </div>
       <div class="detail-resa mt-3">
-        <% @space.booking_dates.each do |booking| %>
-          <p>Le <%= booking.selected_day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
+        <% @selected_days.each do |day| %>
+          <p>Le <%= day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
         <% end %>
       </div>
       <div class="detail-resa mt-3" data-date-target="price">
-        <p> <%=  %> Nbre de jours * <%= @space.price_per_day %>€HT </p>
-        <p> <%=  %> Nbre de semaines * <%= @space.price_per_week %>€HT </p>
-        <p> <%=  %> Nbre de mois * <%= @space.price_per_month %>€HT </p>
+        <p> <%= @number_of_isolated_days %> Nbre de jours * <%= @space.price_per_day %>€HT </p>
+        <p> <%= @number_of_weeks %> Nbre de semaines * <%= @space.price_per_week %>€HT </p>
+        <p> <%= @number_of_months %> Nbre de mois * <%= @space.price_per_month %>€HT </p>
       </div>
       <div class="detail-resa">
         <h3> Détails prix </h3>
-        <p> Total location <%= @space.price_per_day %>€HT </p>
+        <p> Total location <%= @total_amount %>€HT </p>
         <p> Frais de service : X€HT </p>
         <p> Taxes : X€HT </p>
       </div>
       <div class="detail-resa mt-3">
-        <p><strong> TOTAL <%= @space.price_per_day %>€HT </strong></p>
+        <p><strong> TOTAL <%= @total_amount %>€HT </strong></p>
       </div class="mt-3">
-      <!-- Créer le bookin et renvoyer vers la page "Mes réservations"du dashboard -->
+
+      <%= simple_form_for @booking, url: space_bookings_path(@space), method: :post do |form| %>
+        <%= form.submit "Valider Ma Commande" %>
+      <% end %>
+
       </div>
     </div>
   </div>

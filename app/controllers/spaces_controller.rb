@@ -17,12 +17,19 @@ class SpacesController < ApplicationController
   # GET /spaces/1
   def show
     @booking = Booking.new
-    @booking.booking_dates.build
+    # @booking.booking_dates.build
     @space_rating = SpaceRating.new
     @marker = { lat: @space.latitude, lng: @space.longitude }
     @bookings = @space.bookings
     @booking_date = BookingDate.new
-    # raise
+
+    @selected_days = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort
+    hash_of_periods = count_periods(@selected_days)
+
+    @number_of_months = hash_of_periods[:months]
+    @number_of_weeks = hash_of_periods[:weeks]
+    @number_of_isolated_days = hash_of_periods[:isolated_days]
+    @total_amount = @number_of_months * @space.price_per_month + @number_of_weeks * @space.price_per_week + @number_of_isolated_days * @space.price_per_day
   end
 
   # GET /spaces/new
@@ -72,4 +79,27 @@ class SpacesController < ApplicationController
   def space_params
     params.require(:space).permit(:city, :address, :space_profession, :description, :price_per_day, :price_per_week, :price_per_month, photos: [])
   end
+
+  def count_periods(dates)
+    months_count = 0
+    weeks_count = 0
+    isolated_days_count = 0
+
+    while dates.any?
+      if dates.size >= 30 && (dates[29] - dates[0]).to_i == 29
+        months_count += 1
+        dates = dates.drop(30)
+      elsif dates.size >= 7 && (dates[6] - dates[0]).to_i == 6
+        weeks_count += 1
+        dates = dates.drop(7)
+      else
+        isolated_days_count += 1
+        dates = dates.drop(1)
+      end
+    end
+
+    { months: months_count, weeks: weeks_count, isolated_days: isolated_days_count }
+  end
+
+
 end
