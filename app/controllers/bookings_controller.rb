@@ -40,5 +40,4 @@ class BookingsController < ApplicationController
       end
     total_price = @space.price_per_month * months_count + @space.price_per_week * weeks_count + @space.price_per_day * isolated_days_count
   end
-
 end
