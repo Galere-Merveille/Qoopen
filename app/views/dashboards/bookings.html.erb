@@ -1,3 +1,18 @@
-<h1>Mes réservations</h1>
+<div class="container">
+  <h1>Mes réservations</h1>
 
-<%= link_to "Retour au tableau de bord", dashboards_path %>
+  <% current_user.bookings.each do |booking| %>
+    <div class="booking-card">
+      <h4><%= booking.space.address %></h4>
+      <p>Status: <%= booking.status %></p>
+      <%= cl_image_tag booking.space.photos.first.key, crop: :fill, width: 300, class: "booking-img" %>
+      <h5>Réservation faite le : </h5>
+      <% booking.booking_dates.each do |booking_date| %>
+        <p>-<%= booking_date.selected_day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
+      <% end %>
+      <p>Total: <%= booking.total_amount %> €HT</p>
+    </div>
+  <% end %>
+
+  <%= link_to "Retour au tableau de bord", dashboards_path %>
+</div>

@@ -1,3 +1,33 @@
-<h1>Mes informations personnelles</h1>
+<div class="container">
+  <h1>Mes informations personnelles</h1>
 
-<%= link_to "Retour au tableau de bord", dashboards_path %>
+
+  <h5>Prénom:</h5>
+  <%= current_user.first_name %><br ><br >
+
+  <h5>Nom:</h5>
+  <%= current_user.last_name %><br ><br >
+
+  <h5>Email:</h5>
+  <%= current_user.email %><br ><br >
+
+  <h5>Numéro de téléphone:</h5>
+  <%= current_user.phone_number %><br ><br >
+
+  <h5>Adresse:</h5>
+  <%= current_user.address %><br ><br >
+
+  <h5>Code postal:</h5>
+  <%= current_user.postal_code %><br ><br >
+
+  <h5>Profession:</h5>
+  <%= current_user.user_profession %><br ><br >
+
+  <h5>Entreprise:</h5>
+  <%= current_user.company_name %><br ><br >
+
+  <h5>N° siret:</h5>
+  <%= current_user.siret_number %><br ><br >
+
+  <%= link_to "Retour au tableau de bord", dashboards_path %>
+</div>
