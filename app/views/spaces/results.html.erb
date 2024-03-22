@@ -1,12 +1,10 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
 
-
-  <div class="space-title">
-    <h2>Nos espaces</h2>
-  </div>
-  <% if @space.any? %>
-    <div id="spaces">
+<div class="container-result">
+  <div class="d-flex flex-row justify-content-between">
+    <!-- Partie gauche avec les résultats de recherche -->
+    <div id="spaces-result" style="width: 48%;"> <!-- Utilisation de 48% de la largeur pour laisser un petit espace entre les deux éléments -->
       <% @spaces.each do |space| %>
         <%= link_to space_path(space) do %>
           <div class="card-spaces">
@@ -26,10 +24,15 @@
         <% end %>
       <% end %>
     </div>
-    <% else %>
-    <div>
-    <h1>Aucun résultats</h1>
+    <!-- Partie droite avec la carte Mapbox -->
+    <div id="map" style="width: 50%; height: 665px; border-radius: 8px;"
+      data-controller="map-results"
+      data-map-results-markers-value="<%= @markers.to_json %>"
+      data-map-results-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
+</div>
+
 
   <div id="contact">
     <h2>Nous Contacter</h2>

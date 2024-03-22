@@ -11,6 +11,15 @@
     text-decoration: none;
   }
 }
+
+#spaces-result {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  a {
+    text-decoration: none;
+  }
+}
 .card-spaces {
   background-color: #222;
   padding: 15px;
