@@ -1,33 +1,24 @@
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-dark text-muted">
   <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 align-items-center" id="border">
     <!-- Left -->
-    <div class="me-5 d-none d-lg-block text-light">
-      <span>Suivez-nous sur nos réseaux sociaux :</span>
+    <div class="me-5 d-none d-lg-block text-success">
+      <span>Suivez-nous sur nos réseaux sociaux </span>
     </div>
     <!-- Left -->
-
     <!-- Right -->
     <div>
-      <a href="" class="me-4 ">
-        <i class="fab fa-facebook-f"></i>
+      <a href="https://www.instagram.com/quoopen/" class="me-4 reseaux" target="_blank">
+        <i class="fab fa-instagram fa-2x"></i>
       </a>
-      <a href="" class="me-4 ">
-        <i class="fab fa-twitter"></i>
+      <a href="https://www.linkedin.com/company/quoopen.com/" class="me-4 reseaux" target="_blank">
+        <i class="fab fa-linkedin fa-2x"></i>
       </a>
-      <a href="https://www.instagram.com/quoopen/" class="me-4 ">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/company/quoopen.com/" class="me-4 ">
-        <i class="fab fa-linkedin"></i>
-      </a>
-
     </div>
     <!-- Right -->
   </section>
   <!-- Section: Social media -->
-
   <!-- Section: Links  -->
   <section class="">
     <div class="container text-center text-md-start mt-5">
@@ -36,30 +27,38 @@
         <!-- Grid column -->
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4 text-light">
-            <i class="fas fa-gem me-3"></i>La presse en parle
+          <h6 class="text-uppercase fw-bold mb-4 text-success">
+            <i class="fa-regular fa-newspaper me-1" style="color: #69F701;"></i>La presse en parle
           </h6>
-          <div class="logo-container">
-            <a href="https://preproduction.admin.quoopen.com/pdf/start.pdf">
-              <%= image_tag("start.jpg", alt: "logo", class: "navbar-logo", width: 100) %>
-            </a>
-          </div>
-          <div class="logo-container">
-            <%= image_tag("", alt: "logo", class: "navbar-logo", width:100) %>
+          <div class="d-flex">
+            <div class="logo-container me-4">
+              <a href="https://preproduction.admin.quoopen.com/pdf/start.pdf" target="_blank">
+                <%= image_tag("Start.png", alt: "logo", width: 100) %>
+              </a>
+            </div>
+            <div class="logo-container me-4">
+              <a href="https://www.forbes.fr/mediasfrance/quoopen/" target="_blank">
+                <%= image_tag("forbes.png", alt: "logo", width:100) %>
+              </a>
+            </div>
+            <div class="logo-container me-4" id="forbes">
+              <a href="https://admin.quoopen.com/pdf/tribune.pdf" target="_blank">
+                <%= image_tag("Tribune.png", alt: "logo", id: "tribune", width:135) %>
+              </a>
+            </div>
           </div>
         </div>
         <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
-          <h6 class="text-uppercase fw-bold mb-4 text-light">
+          <h6 class="text-uppercase fw-bold mb-4 text-success">
            À propos
           </h6>
           <p>
             <a href="#!" class="text-light">CGU</a>
           </p>
-          <p>
+          <p style="white-space: nowrap;">
             <a href="#!" class="text-light">Politique de confidentialité</a>
           </p>
           <p>
@@ -71,11 +70,9 @@
     </div>
   </section>
   <!-- Section: Links  -->
-
   <!-- Copyright -->
-  <div class="text-center p-4 text-light" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2021 Copyright:
-    <a class="fw-bold text-light" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  <div class="text-align-left p-2 text-light" style="background-color: rgba(0, 0, 0, 0.05);">
+    <p>© 2024 Copyright Quoopen.com</p>
   </div>
   <!-- Copyright -->
 </footer>
