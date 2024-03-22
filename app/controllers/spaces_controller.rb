@@ -9,13 +9,13 @@ class SpacesController < ApplicationController
 
   def results
     @spaces = Space.all
-    if params[:query].present?
-      @spaces = @spaces.search_by_city_and_address(params[:query])
-    end
-
     if params[:space_profession].present?
       @spaces = @spaces.where(space_profession: params[:space_profession])
     end
+    if params[:query].present?
+      @spaces = @spaces.search_by_city(params[:query])
+    end
+
   end
 
   # GET /spaces/1
@@ -27,7 +27,7 @@ class SpacesController < ApplicationController
     @bookings = @space.bookings
     @booking_date = BookingDate.new
 
-    @selected_days = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort
+    @selected_days = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort.uniq
     hash_of_periods = count_periods(@selected_days)
 
     @number_of_months = hash_of_periods[:months]

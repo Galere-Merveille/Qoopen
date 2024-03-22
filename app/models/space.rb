@@ -11,8 +11,8 @@ class Space < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch::Model
-  pg_search_scope :search_by_city_and_address,
-    against: [:city, :address],
+  pg_search_scope :search_by_city,
+    against: [:city],
     using: {
       tsearch: { prefix: true }
     }

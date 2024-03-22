@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking_dates.each do |booking_date|
       booking_date.update(booking: @booking)
     end
-    flash[:notice] = "Booking was successfully created."
+    flash[:notice] = "Votre réservation a bien été prise en compte"
     redirect_to space_path(@space)
   end
 
