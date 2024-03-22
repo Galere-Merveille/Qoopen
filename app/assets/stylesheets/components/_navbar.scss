@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: rgb(33, 37, 41);
+  margin-bottom: 46px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -43,6 +44,7 @@
   width: 100%;
   margin-bottom: 1px;
   margin-top: 1px;
+  background-color: rgba(244, 244, 244, 1);
 }
 
 .navbar-lewagon .d-flex {
@@ -72,10 +74,6 @@
   border-radius: 5px;
 }
 
-.navbar-lewagon .form-check-label {
-  color: white;
-}
-
 .navbar-lewagon #rechercher {
   border-radius: 40px;
   margin-left: 5px;
@@ -87,7 +85,12 @@
   margin: auto;
   padding-right: 45px;
   padding-bottom: 9px;
-  padding-top: 12px;
+  padding-top: 9px;
   border-left: 1px solid black;
   color: #4c5056;
+  background-color: rgba(244, 244, 244, 1);
+}
+
+#durée {
+  border-radius: 0px 20px 20px 0px;
 }
