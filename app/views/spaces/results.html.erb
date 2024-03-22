@@ -5,26 +5,30 @@
   <div class="space-title">
     <h2>Nos espaces</h2>
   </div>
-
-  <div id="spaces">
-    <% @spaces.each do |space| %>
-      <%= link_to space_path(space) do %>
-        <div class="card-spaces">
-          <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
-          <div class="card-title mt-2">
-            <strong><%= space.city %></strong>
+  <% if @space.any? %>
+    <div id="spaces">
+      <% @spaces.each do |space| %>
+        <%= link_to space_path(space) do %>
+          <div class="card-spaces">
+            <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
+            <div class="card-title mt-2">
+              <strong><%= space.city %></strong>
+            </div>
+            <div class="card-content d-flex justify-content-between">
+              <p>
+                <%= space.space_profession %>
+              </p>
+              <p>
+                <strong><%= space.price_per_day %> €/jour</strong>
+              </p>
+            </div>
           </div>
-          <div class="card-content d-flex justify-content-between">
-            <p>
-              <%= space.space_profession %>
-            </p>
-            <p>
-              <strong><%= space.price_per_day %> €/jour</strong>
-            </p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <% else %>
+    <div>
+    <h1>Aucun résultats</h1>
   </div>
 
   <div id="contact">

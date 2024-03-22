@@ -6,28 +6,9 @@
     </div>
   <% end %>
   <!-- Métier dropdown -->
-  <div>
-      <%= form_with url: search_results_path, method: :get, class: "d-flex" do %>
-      <select class="form-select" aria-label="Métier" name="space_profession">
-        <option selected label="Profession"></option>
-        <option value="Coiffure">Coiffure</option>
-        <option value="Esthétique">Esthétique</option>
-        <option value="Barbier">Barbier</option>
-      </select>
-      <%= text_field_tag :query,
-        params[:query],
-        value: "#{params[:query]}",
-        class: "form-control",
-        placeholder: "Ville"%>
-      <select id="durée" aria-label="Durée" class="ps-2">
-        <option selected>Durée</option>
-        <option value="1">Jours</option>
-        <option value="2">Semaine</option>
-        <option value="3">Mois</option>
-      </select>
-      <%= submit_tag "Rechercher", name: "Ville", class: "btn btn-primary", id: "rechercher" %>
-    <% end %>
-  </div>
+      <% unless request.path == root_path %>
+        <%= render partial: "shared/search" %>
+      <% end %>
         <!-- bouton profil navbar -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">

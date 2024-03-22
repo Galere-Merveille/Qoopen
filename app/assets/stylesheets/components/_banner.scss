@@ -1,7 +1,7 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 100px 0;
+  padding: 70px 0;
   background-color: $quoogreen;
   border-radius: 15px;
 }
@@ -11,4 +11,65 @@
   font-size: 50px;
   font-weight: bold;
   font-family: "Work Sans";
+  margin-left: 50px;
+  margin-top: -20px;
+  margin-bottom: 40px;
+}
+
+.banner .form-control {
+  border-radius: 0 0px 0px 0;
+  border: none;
+  margin: auto;
+  padding-bottom: 9px;
+  padding-top: 9px;
+  border: 1px solid #4c5056;
+}
+
+.banner #search {
+  border-radius: 0 30px 30px 0;
+  border: none;
+}
+
+.banner .form-select {
+  padding-bottom: 4px;
+  border-radius: 30px 0 0 30px;
+  width: 100%;
+  border-right: 1px solid #4c5056;
+  border: 1px solid #4c5056;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+.banner .d-flex {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 60%;
+  margin-left: 48px;
+}
+
+.banner .dropdown-menu {
+  border-radius: 20px;
+}
+
+.banner #rechercher {
+  border-radius: 40px;
+  margin-left: 5px;
+  background-color: white;
+  border: 1px solid #4c5056;
+}
+
+.banner #durée {
+  border-radius: 0px 30px 30px 0px;
+  border: none;
+  margin: auto;
+  padding-right: 45px;
+  padding-bottom: 9px;
+  padding-top: 9px;
+  border-left: 1px solid #4c5056;
+  color: #4c5056;
+  background-color: rgba(244, 244, 244, 1);
+  border: 1px solid #4c5056;
+}
+
+.banner #durée {
 }
