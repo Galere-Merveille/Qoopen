@@ -1,22 +1,27 @@
 <div class="container">
-  <h1>Mes réservations</h1>
+  <div class="space-title mt-3">
+    <h2>Mes réservations</h2>
+  </div>
   <div class="row">
     <% current_user.bookings.each do |booking| %>
       <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card-bookings">
-          <div class="booking-wrapper text-secondary">
-            <h4><%= booking.space.address %></h4>
-            <p>Status: <%= booking.status %></p>
-            <%= cl_image_tag booking.space.photos.first.key, crop: :fill, class:"booking-img" %>
-            <h5>Réservation faite le : </h5>
-            <% booking.booking_dates.each do |booking_date| %>
-              <p><%= booking_date.selected_day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
-            <% end %>
-            <p>Total: <%= booking.total_amount %> €HT</p>
+        <div class="booking-wrapper text-secondary mt-3">
+          <h4><%= booking.space.city %> • <%= booking.space.space_profession %> </h4>
+          <%= cl_image_tag booking.space.photos.first.key, crop: :fill, class:"booking-img" %>
+          <div class="detail-resa">
+            <p><strong><%= booking.space.address %></strong></p>
+            <p>À partir du <%= booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></p>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <p> TOTAL réservation </p>
+            <p><strong> <%= booking.total_amount.to_i %>€HT </strong></p>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <button class="button-4" role="button"><%= booking.status %></button>
+            <button class="button-voir" role="button">Voir détails</button>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-  <%= link_to "Retour au tableau de bord", dashboards_path %>
 </div>
