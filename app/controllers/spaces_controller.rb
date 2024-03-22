@@ -104,6 +104,4 @@ class SpacesController < ApplicationController
 
     { months: months_count, weeks: weeks_count, isolated_days: isolated_days_count }
   end
-
-
 end
