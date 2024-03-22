@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def calculate_total_amount
-    dates = @space.booking_dates.where(user: current_user).where(bookiereng: nil).pluck(:selected_day).sort
+    dates = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort
       months_count = 0
       weeks_count = 0
       isolated_days_count = 0
