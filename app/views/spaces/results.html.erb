@@ -1,31 +1,38 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
 
-
-  <div class="space-title">
-    <h2>Nos espaces</h2>
-  </div>
-
-  <div id="spaces">
-    <% @spaces.each do |space| %>
-      <%= link_to space_path(space) do %>
-        <div class="card-spaces">
-          <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
-          <div class="card-title mt-2">
-            <strong><%= space.city %></strong>
+<div class="container-result">
+  <div class="d-flex flex-row justify-content-between">
+    <!-- Partie gauche avec les résultats de recherche -->
+    <div id="spaces-result" style="width: 48%;"> <!-- Utilisation de 48% de la largeur pour laisser un petit espace entre les deux éléments -->
+      <% @spaces.each do |space| %>
+        <%= link_to space_path(space) do %>
+          <div class="card-spaces">
+            <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
+            <div class="card-title mt-2">
+              <strong><%= space.city %></strong>
+            </div>
+            <div class="card-content d-flex justify-content-between">
+              <p>
+                <%= space.space_profession %>
+              </p>
+              <p>
+                <strong><%= space.price_per_day %> €/jour</strong>
+              </p>
+            </div>
           </div>
-          <div class="card-content d-flex justify-content-between">
-            <p>
-              <%= space.space_profession %>
-            </p>
-            <p>
-              <strong><%= space.price_per_day %> €/jour</strong>
-            </p>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <!-- Partie droite avec la carte Mapbox -->
+    <div id="map" style="width: 50%; height: 665px; border-radius: 8px;"
+      data-controller="map-results"
+      data-map-results-markers-value="<%= @markers.to_json %>"
+      data-map-results-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
+</div>
+
 
   <div id="contact">
     <h2>Nous Contacter</h2>

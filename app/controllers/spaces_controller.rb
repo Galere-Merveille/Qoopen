@@ -15,7 +15,13 @@ class SpacesController < ApplicationController
     if params[:query].present?
       @spaces = @spaces.search_by_city(params[:query])
     end
-
+    @markers = @spaces.geocoded.map do |space|
+      {
+        lat: space.latitude,
+        lng: space.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {space: space})
+      }
+    end
   end
 
   # GET /spaces/1
