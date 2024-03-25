@@ -11,7 +11,13 @@ class BookingsController < ApplicationController
       booking_date.update(booking: @booking)
     end
     flash[:notice] = "Votre réservation a bien été prise en compte"
-    redirect_to bookings_dashboards_path
+    redirect_to space_booking_path(@booking.space, @booking)
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    @message = Message.new
+    @messages = @booking.messages
   end
 
   def update

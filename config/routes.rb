@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "spaces#index"
 
   resources :spaces, except: :index do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :show]
     resources :space_ratings, only: :create
     resources :booking_dates, only: [:new, :create]
   end
@@ -20,10 +20,10 @@ Rails.application.routes.draw do
       get "/wishspace", to: "dashboards#wishspace"
       get "/wishspace/new", to: "dashboards#new_wishspace"
       post "/wishspace/create", to: "dashboards#create_wishspace"
-      get "/owner", to: "dashboards#owner"#reservations des locaux du owner
+      get "/owner", to: "dashboards#owner" #reservations des locaux du owner
     end
   end
-
+resources :messages, only: :create
   get "/search", to: "spaces#results", as: "search_results"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :space_ratings
   has_many :booking_dates, through: :bookings
   has_many :bookings
+  has_many :messages
 end
