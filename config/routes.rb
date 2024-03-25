@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   root to: "spaces#index"
 
   resources :spaces, except: :index do
-    resources :bookings, only: :create
+    resources :bookings, only: [:create]
     resources :space_ratings, only: :create
     resources :booking_dates, only: [:new, :create]
   end
+
+  resources :bookings, only: :update
 
   resources :dashboards, only: :index do
     collection do

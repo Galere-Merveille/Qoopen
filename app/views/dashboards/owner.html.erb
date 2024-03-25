@@ -1,6 +1,56 @@
-<h1>Espace propriétaire</h1>
-<h2>Mes Réservations</h2>
-<h2>Mes Espaces</h2>
+<div class="container">
+  <h1>Espace gestion</h1>
 
+  <div class="container-space">
+    <h2>Mes Réservations</h2>
 
-<%= link_to "Espace loueur", dashboards_path %>
+    <table class="full-width-table">
+      <tr class="table-header">
+        <th scope="col">Statut</th>
+        <th scope="col">Freelance</th>
+        <th scope="col">À partir du</th>
+        <th scope="col">Nbre de jours</th>
+        <th scope="col">Versement total</th>
+        <th scope="col">Détails</th>
+      </tr>
+        <% @owner_bookings.each do |booking| %>
+        <tr class="table-row">
+          <td><%= booking.status %></td>
+          <td><%= booking.user.company_name %></td>
+          <td><%= booking.start_at.strftime("%d/%m/%Y") %></td>
+          <td><%= booking.booking_dates.count %></td>
+          <td><%= booking.total_amount.to_i %>€HT</td>
+          <td><button class="button-voir" role="button">Voir détails</button></td>
+          <td><%= simple_form_for booking, url: booking_path(booking, value: "accepter"), method: :patch do |form| %>
+                <%= form.submit "Accepter", class:"button-voir" %>
+              <% end %>
+          </td>
+          <td><%= simple_form_for booking, url: booking_path(booking, value: "refuser"), method: :patch do |form| %>
+                <%= form.submit "Refuser", class:"button-voir" %>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <h2>Mes Espaces</h2>
+    <div class="row">
+    <% current_user.spaces.each do |owner_space| %>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="booking-wrapper text-secondary mt-3">
+          <h4><%= owner_space.city %> • <%= owner_space.space_profession %> </h4>
+          <%= cl_image_tag owner_space.photos.first.key, crop: :fill, class:"booking-img" %>
+          <p><%= owner_space.address %></p>
+          <div class="d-flex justify-content-between mt-2">
+            <%= link_to "Modifier", edit_space_path(owner_space), class:"btn btn-outline-dark" %>
+            <%= link_to "Effacer", space_path(owner_space), class: "btn btn-outline-danger", remote: true, data: { turbo_confirm: "Êtes vous sur ?", turbo_method: :delete } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+  <%= link_to "Espace loueur", dashboards_path %>
+  <%= link_to "Déposer une annonce", new_space_path %>
+</div>
