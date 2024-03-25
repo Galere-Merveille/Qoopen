@@ -32,7 +32,6 @@ class SpacesController < ApplicationController
     @marker = { lat: @space.latitude, lng: @space.longitude }
     @bookings = @space.bookings
     @booking_date = BookingDate.new
-
     @selected_days = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort.uniq
     hash_of_periods = count_periods(@selected_days)
 
