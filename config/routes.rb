@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :booking_dates, only: [:new, :create]
   end
 
+  resources :bookings, only: :update
+
   resources :dashboards, only: :index do
     collection do
       get "/infos", to: "dashboards#infos"

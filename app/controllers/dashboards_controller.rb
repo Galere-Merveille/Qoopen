@@ -23,6 +23,7 @@ class DashboardsController < ApplicationController
   end
 
   def owner
+    @owner_bookings = Booking.joins(:space).where(spaces: { user: current_user}).sort_by { |booking| booking.start_at }
   end
 
   private

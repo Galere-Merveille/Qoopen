@@ -20,14 +20,40 @@ class BookingsController < ApplicationController
     @messages = @booking.messages
   end
 
+  def update
+    booking = Booking.find(params[:id])
+    if params[:value] == "accepter"
+      booking.accepted!
+      flash[:notice] = "Réservation acceptée"
+    elsif params[:value] == "refuser"
+      booking.rejected!
+      flash[:alert] = "Réservation refusée"
+    else
+      flash[:alert] = "Problème !"
+    end
+    redirect_to owner_dashboards_path
+  end
+
+
+  #   # if @booking.update(status: params[:status])
+  #   #   render json: { message: "Statut mis à jour avec succès" }
+  #   # else
+  #   #   render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
+  #   # end
+  # end
+
+
+
+  # link_to "accepter"  update_status_path(value: "accepter")
+  # link_to "refuser"  update_status_path(value: "refuser")
+
   private
 
-  def booking_params
-    params.require(:booking).permit(:total_amount)
+  def booking_paramss
+    params.require(:booking).permit(:total_amount, :status)
   end
 
   def calculate_total_amount
-    dates = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort
       months_count = 0
       weeks_count = 0
       isolated_days_count = 0

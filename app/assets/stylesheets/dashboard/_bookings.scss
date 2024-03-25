@@ -15,4 +15,19 @@
 
 .messages {
   color: black;
+
+.full-width-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-header {
+  text-align: left;
+  padding: 16px 16px 16px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.table-row {
+  border-bottom: 1px solid #ccc;
+  padding: 16px 16px 16px 0;
 }
