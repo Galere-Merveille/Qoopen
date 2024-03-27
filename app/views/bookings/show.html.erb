@@ -1,16 +1,42 @@
-<div class="container chatroom rounded" data-controller="booking-subscription"   data-booking-subscription-booking-id-value="<%= @booking.id %>"
->
-  <div class="messages" data-booking-subscription-target="messages">
-    <% @booking.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
-  </div>
+<!-- Show de booking -->
+<div class="container">
+  <div class="d-flex flex-row justify-content-between">
+    <div class="container-booking-show" style="width: 49%">
+      <div class="booking-wrapper text-secondary mt-2">
+        <h4><%= @booking.space.space_profession %> • À partir du <%= @booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></h4>
+        <p><%= @booking.space.address %></p>
+        <%= cl_image_tag @booking.space.photos.first.key, crop: :fill, class:"booking-img-chat" %>
+        <div class="detail-resa">
+          <p><strong>Dates réservées</strong></p>
+          <% @booking.booking_dates.each do |booking_date| %>
+            <p>Le <%= booking_date.selected_day.strftime("%d/%m/%Y") %></p>
+          <% end %>
+        </div>
+        <div class="d-flex justify-content-between mt-2">
+          <p> TOTAL réservation </p>
+          <p><strong> <%= @booking.total_amount.to_i %>€HT </strong></p>
+        </div>
+      </div>
+    </div>
 
-  <%= simple_form_for @message, url: messages_path(booking_id: @booking), method: "post",
-    html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|%>
-    <%= f.input :content,
-      label: false,
-      wrapper_html: {class: "flex-grow-1"}%>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
+    <div class="container-chatroom-rounded" style="width: 49%; height: 650px; border-radius: 8px;">
+      <div class="chatroom" data-controller="booking-subscription" data-booking-subscription-booking-id-value="<%= @booking.id %>">
+        <div class="messages" data-booking-subscription-target="messages">
+          <% @booking.messages.each do |message| %>
+            <%= render "messages/message", message: message %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="container-input">
+        <%= simple_form_for @message, url: messages_path(booking_id: @booking), method: "post",
+          html: {data: {action: "turbo:submit-end->booking-subscription#resetForm"}, class: "d-flex"} do |f|%>
+          <%= f.input :content,
+            label: false,
+            wrapper_html: {class: "flex-grow-1"}%>
+          <%= f.submit "Send", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

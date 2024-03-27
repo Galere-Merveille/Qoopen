@@ -23,12 +23,57 @@
 }
 
 .table-header {
-  text-align: left;
+  text-align: center;
   padding: 16px 16px 16px 0;
   border-bottom: 1px solid #ccc;
 }
 
 .table-row {
   border-bottom: 1px solid #ccc;
-  padding: 16px 16px 16px 0;
+  padding: 20px 20px 20px 0px;
+  margin-block-start: 5px;
+  text-align: center;
+}
+
+#booking-card-link {
+  color: $gray;
+  a {
+    text-decoration: none;
+  }
+}
+
+#booking-card-link h4 {
+  color: $gray;
+}
+
+.text-gray {
+  color: $gray;
+}
+
+.nav-pills .nav-link.active {
+  color: $gray;
+}
+
+.custom-button {
+  background-color: #222; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  border: none; /* Supprimer la bordure */
+  margin: 3px 10px; /* Ajouter un espace intérieur */
+  cursor: pointer; /* Curseur pointer */
+}
+
+.custom-button:hover {
+  color: $quoogreen; /* Couleur de fond au survol */
+}
+
+.reject-button {
+  color: white; /* Couleur du texte */
+  background-color: #222;
+  border: none; /* Supprimer la bordure */
+  margin: 3px 10px; /* Ajouter un espace intérieur */
+  cursor: pointer; /* Curseur pointer */
+}
+
+.reject-button:hover {
+  color: $red; /* Couleur de fond au survol */
 }

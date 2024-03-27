@@ -34,19 +34,15 @@ class BookingsController < ApplicationController
     redirect_to owner_dashboards_path
   end
 
-  #   # if @booking.update(status: params[:status])
-  #   #   render json: { message: "Statut mis à jour avec succès" }
-  #   # else
-  #   #   render json: { errors: @booking.errors.full_messages }, status: :unprocessable_entity
-  #   # end
-  # end
 
-  # link_to "accepter"  update_status_path(value: "accepter")
-  # link_to "refuser"  update_status_path(value: "refuser")
+  def archive_booking
+    Booking.archive
+  end
+
 
   private
 
-  def booking_paramss
+  def booking_params
     params.require(:booking).permit(:total_amount, :status)
   end
 
@@ -68,6 +64,8 @@ class BookingsController < ApplicationController
         dates = dates.drop(1)
       end
     end
-    total_price = @space.price_per_month * months_count + @space.price_per_week * weeks_count + @space.price_per_day * isolated_days_count
+
+    total_price = (@space.price_per_month * months_count) + (@space.price_per_week * weeks_count) + (@space.price_per_day * isolated_days_count)
+    total_price_with_taxes = (total_price + (total_price * 0.10)).to_i
   end
 end

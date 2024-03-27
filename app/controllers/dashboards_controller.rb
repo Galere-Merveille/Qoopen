@@ -24,6 +24,11 @@ class DashboardsController < ApplicationController
 
   def owner
     @owner_bookings = Booking.joins(:space).where(spaces: { user: current_user})
+    @sorted_bookings = @owner_bookings.sort_by { |booking| booking.start_at }
+    @pendings = @owner_bookings.where(status: "pending")
+    @accepted = @owner_bookings.where(status: "accepted")
+    @rejected = @owner_bookings.where(status: "rejected")
+    @archived = @owner_bookings.where(status: "archived")
   end
 
   private

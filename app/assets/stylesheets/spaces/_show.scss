@@ -14,14 +14,17 @@
 
 .booking-wrapper {
   background-color: white;
+  color: $gray;
   padding: 15px;
   border-radius: 8px;
+  text-decoration: none;
 }
 
 .detail-resa {
   padding-top: 8px;
   border-bottom: 1px solid $quoogreen;
   line-height: 60%;
+  color: $gray;
 }
 
 .special-date {

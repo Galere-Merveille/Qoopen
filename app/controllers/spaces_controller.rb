@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
-  before_action :set_space, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!, only: [:index, :show, :results]
+  before_action :set_space, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show results]
 
   # GET /spaces
   def index
@@ -39,7 +39,7 @@ class SpacesController < ApplicationController
     @number_of_months = hash_of_periods[:months]
     @number_of_weeks = hash_of_periods[:weeks]
     @number_of_isolated_days = hash_of_periods[:isolated_days]
-    @total_amount = @number_of_months * @space.price_per_month + @number_of_weeks * @space.price_per_week + @number_of_isolated_days * @space.price_per_day
+    @total_amount = (@number_of_months * @space.price_per_month) + (@number_of_weeks * @space.price_per_week) + (@number_of_isolated_days * @space.price_per_day)
   end
 
   # GET /spaces/new
