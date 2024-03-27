@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
   enum :status, { pending: 0, accepted: 1, rejected: 2, archived: 3 }
 
   def start_at
-    booking_dates.order(:selected_day).first.selected_day
+    booking_dates.order(:selected_day).first
   end
 
   def end_at
