@@ -6,8 +6,6 @@
     <% end %>
   </div>
 
-
-
   <%= simple_form_for @message, url: messages_path(booking_id: @booking), method: "post",
     html: {data: {action: "turbo:submit-end->chatroom-subscription#resetForm"}, class: "d-flex"} do |f|%>
     <%= f.input :content,

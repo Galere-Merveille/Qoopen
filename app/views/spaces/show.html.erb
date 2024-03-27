@@ -41,16 +41,30 @@
 
 
       <div class="container">
-        <div class="booking-wrapper text-secondary">
-          <h3>Sélectionner vos dates</h3>
-          <%= simple_form_for [@space, @booking_date], data: { controller: "booking-date"} do |f| %>
+        <div class="booking-wrapper text-secondary" data-controller="toggle-calendar">
+        <h3>Dates de réservation</h3>
+          <div class="form-check mb-2 form-switch d-flex align-items-left">
+            <label class="form-check-label me-5" for="flexSwitchCheckDefault">À la journée</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault", data-toggle-calendar-target="button" data-action="click->toggle-calendar#toggle">
+            <label class="form-check-label ms-2" for="flexSwitchCheckDefault">Par période</label>
+          </div>
+          <%= simple_form_for [@space, @booking_date], html: {data: {toggle_calendar_target: "dayCalendar"} } do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
             <%= f.input :selected_day, as: :string,
                                     required: false,
-                                    label: "Dates de réservation",
-                                    input_html: { class: "datepicker", data: { controller: "datepicker" }, style: "display: none;" } %>
-            <%= f.button :submit, "Ajouter à votre réservation", class: "btn btn-primary", data: { target: "booking-date.button" }%>
+                                    label: "Choisissez vos jours",
+                                    input_html: { class: "datepicker", data: { controller: "datepicker",datepicker_selected_days_value: @selected_days.to_json, datepicker_disable_value: @selected_days_disable.to_json }, style: "display: none;" } %>
+            <%= f.button :submit, "Ajouter à votre réservation", class: "btn btn-primary"%>
+          <% end %>
+          <%= simple_form_for @booking_date, url: space_booking_dates_path(@space, value: "range"), method: :post, html: {data: {toggle_calendar_target: "rangeCalendar"} } do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <%= f.input :selected_day, as: :string,
+                                    required: false,
+                                    label: "Choisissez votre période",
+                                    input_html: { class: "datepicker", data: { controller: "datepicker2", datepicker2_selected_days_value: @selected_days.to_json, datepicker2_disable_value: @selected_days_disable.to_json }, style: "display: none;" } %>
+            <%= f.button :submit, "Ajouter à votre réservation", class: "btn btn-primary"%>
           <% end %>
         </div>
         <div class="booking-wrapper text-secondary mt-3">
@@ -62,7 +76,9 @@
           <% @selected_days.each do |day| %>
             <div class="d-flex justify-content-between" data-controller="remove-date">
               <p>Le <%= day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
-                <i data-action="click->remove-date#remove" class="fa-solid fa-xmark" style="color: #69F701;"></i>
+              <%= link_to space_booking_date_path(@space, day), class: "remove-date-link", remote: true, data: { confirm: "Are you sure?", turbo_method: :delete }  do %>
+                <i class="fa-solid fa-xmark" style="color: #69F701;"></i>
+              <% end %>
             </div>
           <% end %>
         </div>

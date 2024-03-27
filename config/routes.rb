@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :spaces, except: :index do
     resources :bookings, only: [:create, :show]
     resources :space_ratings, only: :create
-    resources :booking_dates, only: [:new, :create]
+    resources :booking_dates, only: [:new, :create, :destroy]
   end
 
   resources :bookings, only: :update
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get "/owner", to: "dashboards#owner" #reservations des locaux du owner
     end
   end
-resources :messages, only: :create
+  resources :messages, only: :create
   get "/search", to: "spaces#results", as: "search_results"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

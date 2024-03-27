@@ -1,12 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
 
+// Connects to data-controller="datepicker2"
 export default class extends Controller {
   static values = { disable: Array, selectedDays: Array };
 
   connect() {
     flatpickr(this.element, {
-      mode: "multiple",
+      mode: "range",
       dateFormat: "Y-m-d",
       disable: this.disableValue,
       inline: true,
