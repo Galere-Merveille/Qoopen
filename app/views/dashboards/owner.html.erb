@@ -44,7 +44,7 @@
                   </button>
                 <% end %>
               </td>
-              <td><%= booking.start_at %></td>
+              <td><%= booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></td>
               <td><%= booking.user.company_name %></td>
               <td><%= booking.booking_dates.count %></td>
               <td><%= booking.total_amount.to_i %>€HT</td>
@@ -67,7 +67,7 @@
           </tr>
           <% @accepted.each do |booking| %>
           <tr class="table-row">
-            <td><%= booking.start_at %></td>
+            <td><%= booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></td>
             <td><%= booking.user.company_name %></td>
             <td><%= booking.booking_dates.count %></td>
             <td><%= booking.total_amount.to_i %>€HT</td>
@@ -97,7 +97,7 @@
           </tr>
           <% @archived.each do |booking| %>
           <tr class="table-row">
-            <td><%= booking.start_at %></td>
+            <td><%= booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></td>
             <td><%= booking.user.company_name %></td>
             <td><%= booking.booking_dates.count %></td>
             <td><%= booking.total_amount.to_i %>€HT</td>
@@ -120,7 +120,7 @@
           </tr>
           <% @rejected.each do |booking| %>
           <tr class="table-row">
-            <td><%= booking.start_at %></td>
+            <td><%= booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></td>
             <td><%= booking.user.company_name %></td>
             <td><%= booking.booking_dates.count %></td>
             <td><%= booking.total_amount.to_i %>€HT</td>
