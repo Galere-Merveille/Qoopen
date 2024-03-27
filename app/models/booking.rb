@@ -8,6 +8,6 @@ class Booking < ApplicationRecord
 
 
   def start_at
-    booking_dates.order(:selected_day).first.selected_day
+    booking_dates.order(:selected_day).first
   end
 end

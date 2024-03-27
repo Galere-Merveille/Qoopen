@@ -10,7 +10,7 @@
           <%= cl_image_tag booking.space.photos.first.key, crop: :fill, class:"booking-img" %>
           <div class="detail-resa">
             <p><strong><%= booking.space.address %></strong></p>
-            <p>À partir du <%= booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></p>
+            <p>À partir du <%= booking.booking_dates.first %></p>
           </div>
           <div class="d-flex justify-content-between mt-2">
             <p> TOTAL réservation </p>

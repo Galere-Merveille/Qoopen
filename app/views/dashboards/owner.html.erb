@@ -17,7 +17,7 @@
         <tr class="table-row">
           <td><%= booking.status %></td>
           <td><%= booking.user.company_name %></td>
-          <td><%= booking.start_at.strftime("%d/%m/%Y") %></td>
+          <td><%= booking.start_at%></td>
           <td><%= booking.booking_dates.count %></td>
           <td><%= booking.total_amount.to_i %>€HT</td>
           <td><button class="button-voir" role="button">Voir détails</button></td>

@@ -23,3 +23,25 @@
   border-bottom: 1px solid $quoogreen;
   line-height: 60%;
 }
+
+.special-date {
+  background-color: lightblue;
+}
+
+.calendar {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#calendar2 {
+  display: none; /* Cache le deuxième calendrier initialement */
+}
+
+.form-check-input {
+  background-color: #69f701;
+}
+
+.form-check {
+  padding-left: 0px;
+}
