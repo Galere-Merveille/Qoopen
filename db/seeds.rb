@@ -12,9 +12,11 @@ SpaceRating.destroy_all
 Booking.destroy_all
 User.destroy_all
 Space.destroy_all
-
 puts 'Creating users...'
+file_path = Rails.root.join("app", "assets", "images", "toto.jpg") # Assurez-vous de spécifier le chemin correct
+file = File.open(file_path)
 user1 = User.new(email: "toto@gmail.com", password: "azerty")
+user1.photo.attach(io: file, filename: "toto.jpg", content_type: "image/png")
 user1.save!
 
 url_image = ["https://res.cloudinary.com/planity/image/upload/q_auto,f_auto,w_1200,h_630/kcn2k8ivugyfg2uiqr6o",
