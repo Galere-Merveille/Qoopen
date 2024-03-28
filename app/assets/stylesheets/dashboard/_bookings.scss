@@ -13,8 +13,15 @@
   margin-bottom: 10px;
 }
 
+.bloc-resa {
+  padding-top: 8px;
+  line-height: 60%;
+  color: $gray;
+  flex-grow: 0.5;
+}
+
 .messages {
-  color: black;
+  color: $gray;
 }
 
 .full-width-table {
@@ -56,7 +63,7 @@
 
 .custom-button {
   background-color: #222; /* Couleur de fond */
-  color: white; /* Couleur du texte */
+  color: $quoogreen; /* Couleur du texte */
   border: none; /* Supprimer la bordure */
   margin: 3px 10px; /* Ajouter un espace intérieur */
   cursor: pointer; /* Curseur pointer */
@@ -67,7 +74,7 @@
 }
 
 .reject-button {
-  color: white; /* Couleur du texte */
+  color: $red; /* Couleur du texte */
   background-color: #222;
   border: none; /* Supprimer la bordure */
   margin: 3px 10px; /* Ajouter un espace intérieur */

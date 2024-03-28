@@ -179,6 +179,21 @@ esthetique_nantes_2 = Space.new(city: "Nantes", address: "16-20 Rue des Rochette
 end
 esthetique_nantes_2.save!
 
+esthetique_flip_2 = Space.new(city: "Paris", address: "30 rue Louis le Grand, Paris", space_profession: "Esthétique",
+  description: "Espace esthétique idyllique au cœur de Paris, à 2 pas d'Opera.
+  Ce que nous mettons à votre disposition : deux postes pour accueillir deux free-lances, chacun équipé d’un espace dédié à la manucure et à la pédicure respectivement, comme le montre la photo.
+  • Services inclus : café-boisson, serviette-linge, accueil chaleureux pour votre clientèle.
+  • Produits et ménage non inclus.
+  Si vous êtes freelance, rejoignez un salon dynamique, joyeux et plein d’énergie.
+  Profitez du wifi et de la musique d’ambiance.",
+  price_per_day: 88, price_per_week: 330, price_per_month: 880, user_id: user1.id)
+
+3.times do
+  file = URI.open(url_image.sample)
+  esthetique_flip_2.photos.attach(io: file, filename: "file_name")
+end
+esthetique_flip_2.save!
+
 coiffure_lyon = Space.new(city: "Lyon", address: "53 Rue de Marseille, Lyon", space_profession: "Coiffure",
   description: "Salon de coiffure moderne situé en plein cœur de Lyon. Espace lumineux et convivial, équipé de tout le nécessaire pour accueillir votre clientèle. Wi-Fi gratuit et ambiance musicale.",
   price_per_day: 90, price_per_week: 400, price_per_month: 1100, user_id: user1.id)
@@ -209,15 +224,15 @@ esthetique_bordeaux = Space.new(city: "Mérignac", address: "8 Avenue des Frère
 end
 esthetique_bordeaux.save!
 
-esthetik_montpellier = Space.new(city: "Marseille", address: "15 Avenue Alexis Breysse, Marseille", space_profession: "Esthétique",
+esthetik_carolus = Space.new(city: "Paris", address: "8 rue Blanche, Paris", space_profession: "Esthétique",
   description: "Institut esthétique moderne offrant une expérience de soins de qualité. Cadre relaxant et professionnel, idéal pour fidéliser votre clientèle. Wifi gratuit et ambiance musicale inclus.",
   price_per_day: 85, price_per_week: 370, price_per_month: 1050, user_id: user1.id)
 
 3.times do
   file_montpellier = URI.open(url_image.sample)
-  esthetik_montpellier.photos.attach(io: file_montpellier, filename: "file_name")
+  esthetik_carolus.photos.attach(io: file_montpellier, filename: "file_name")
 end
-esthetik_montpellier.save!
+esthetik_carolus.save!
 
 coiffure_marseille = Space.new(city: "Marseille", address: "318 Av. du 24 Avril 1915, Marseille", space_profession: "Coiffure",
   description: "Salon de coiffure dynamique situé au cœur de Marseille. Ambiance conviviale et équipements professionnels pour satisfaire votre clientèle. Wifi disponible pour les clients.",
@@ -229,8 +244,8 @@ coiffure_marseille = Space.new(city: "Marseille", address: "318 Av. du 24 Avril 
 end
 coiffure_marseille.save!
 
-barbier_paris = Space.new(city: "Paris", address: "20 rue Sedaine, Paris", space_profession: "Barbier",
-  description: "Espace de barbier tendance au cœur de Paris. Cadre élégant et services de qualité pour une expérience de rasage exceptionnelle. Wifi gratuit et ambiance musicale inclus.",
+barbier_paris = Space.new(city: "Paris", address: "20 rue Sedaine, Paris", space_profession: "Esthétique",
+  description: "Institut esthétique haut de gamme situé dans le 11e arrondissement de Paris. Cadre raffiné et services de qualité pour satisfaire une clientèle exigeante. Wifi gratuit et ambiance relaxante.",
   price_per_day: 90, price_per_week: 400, price_per_month: 1100, user_id: user1.id)
 
 3.times do
@@ -278,6 +293,16 @@ space_marseille_2 = Space.new(city: "Marseille", address: "34 Rue de la Paix Mar
   space_marseille_2.photos.attach(io: file_marseille_2, filename: "file_name")
 end
 space_marseille_2.save!
+
+space_paris_2 = Space.new(city: "Paris", address: "30 rue Levert, 75020 Paris", space_profession: "Esthétique",
+  description: "Institut esthétique moderne et chaleureux, situé dans le quartier animé d'Oberkampf à Paris. Cadre relaxant et équipements de qualité pour offrir à votre clientèle une expérience de soin inoubliable. Wifi gratuit disponible.",
+  price_per_day: 90, price_per_week: 400, price_per_month: 1100, user_id: user1.id)
+
+3.times do
+  file_paris_2 = URI.open(url_image.sample)
+  space_paris_2.photos.attach(io: file_paris_2, filename: "file_name")
+end
+space_paris_2.save!
 
 space_marseille_3 = Space.new(city: "Marseille", address: "16 Quai de Rive Neuve, 13001 Marseille", space_profession: "Barbier",
   description: "Espace de barbier authentique et tendance, situé sur le Vieux-Port de Marseille. Cadre élégant et services de rasage de qualité pour une expérience unique. Wifi gratuit et ambiance musicale inclus.",

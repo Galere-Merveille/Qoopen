@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save
       BookingChannel.broadcast_to(
         @booking,
-        render_to_string(partial: "message", locals: {message: @message })
+        render_to_string(partial: "message", locals: { message: @message })
       )
       head :ok
       # redirect_to space_booking_path(@booking.space, @booking)

@@ -1,2 +1,18 @@
-<h2><%= space.city %></h2>
-<p>Descriptif <%= space.address %></p>
+<div id="popup-window">
+  <%= link_to space_path(space) do %>
+    <div class="card-map">
+      <%= cl_image_tag space.photos.first.key, crop: :fill, class:"listing-img" %>
+      <div class="title-map mt-2">
+        <strong><%= space.address%></strong>
+      </div>
+      <div class="map-content d-flex justify-content-between">
+        <p>
+          <%= space.space_profession %>
+        </p>
+        <p>
+          <strong><%= space.price_per_day %> €/jour</strong>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

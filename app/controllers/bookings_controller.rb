@@ -18,6 +18,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @message = Message.new
     @messages = @booking.messages
+    @selected_days = @booking.booking_dates.pluck(:selected_day)
+    hash_of_periods = count_periods(@selected_days)
+    @number_of_months = hash_of_periods[:months]
+    @number_of_weeks = hash_of_periods[:weeks]
+    @number_of_isolated_days = hash_of_periods[:isolated_days]
   end
 
   def update
@@ -67,5 +72,26 @@ class BookingsController < ApplicationController
 
     total_price = (@space.price_per_month * months_count) + (@space.price_per_week * weeks_count) + (@space.price_per_day * isolated_days_count)
     total_price_with_taxes = (total_price + (total_price * 0.10)).to_i
+  end
+
+  def count_periods(dates)
+    months_count = 0
+    weeks_count = 0
+    isolated_days_count = 0
+
+    while dates.any?
+      if dates.size >= 30 && (dates[29] - dates[0]).to_i == 29
+        months_count += 1
+        dates = dates.drop(30)
+      elsif dates.size >= 7 && (dates[6] - dates[0]).to_i == 6
+        weeks_count += 1
+        dates = dates.drop(7)
+      else
+        isolated_days_count += 1
+        dates = dates.drop(1)
+      end
+    end
+
+    { months: months_count, weeks: weeks_count, isolated_days: isolated_days_count }
   end
 end
