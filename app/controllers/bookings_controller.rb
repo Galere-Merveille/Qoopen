@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
       flash[:notice] = "Votre réservation vient d'être acceptée"
     elsif params[:value] == "refuser"
       booking.rejected!
-      flash[:alert] = "Réservation d'être refusée"
+      flash[:alert] = "Votre réservation vient d'être refusée"
     else
       flash[:alert] = "Il y a eu un problème !"
     end
