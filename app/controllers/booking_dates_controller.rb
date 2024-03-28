@@ -20,14 +20,17 @@ class BookingDatesController < ApplicationController
   end
 
   def destroy
+    @space = @booking_date.space
     @booking_date.destroy
-    redirect_to space_path(@space), notice: "Booking date was successfully destroyed.", status: :see_other
+    @selected_days_collection = @space.booking_dates.where(user: current_user).where(booking: nil).sort.uniq
+    respond_to do |format|
+      format.text { render partial: "shared/list", locals: { selected_days_collection: @selected_days_collection }, formats: [:html] }
+    end
   end
 
   private
 
   def set_booking_date
-    @space = Space.find(params[:id])
     @booking_date = BookingDate.find(params[:id])
   end
 

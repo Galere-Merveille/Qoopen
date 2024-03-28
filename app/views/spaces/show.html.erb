@@ -1,7 +1,7 @@
 <!-- Show d'espace -->
 <p style="color: green"><%= notice %></p>
 <div class="container">
-  <%= link_to "<< Retour aux espaces", root_path %>
+  <%= link_to "<< Retour aux espaces", search_results_path %>
 
   <div class="container-space">
     <div class="d-flex justify-content-between align-self-center mt-3">
@@ -72,16 +72,8 @@
         <div class="detail-resa">
           <h3> Votre réservation </h3>
         </div>
-        <div class="detail-resa mt-3">
-          <p><strong> Dates à réserver </strong></p>
-          <% @selected_days.each do |day| %>
-            <div class="d-flex justify-content-between" data-controller="remove-date">
-              <p>Le <%= day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
-              <%= link_to space_booking_date_path(@space, day), class: "remove-date-link", remote: true, data: { confirm: "Are you sure?", turbo_method: :delete }  do %>
-                <i class="fa-solid fa-xmark" style="color: #69F701;"></i>
-              <% end %>
-            </div>
-          <% end %>
+        <div data-controller="remove-date" data-remove-date-target="list">
+          <%= render "shared/list", locals: {selected_days_collection: @selected_days_collection} %>
         </div>
         <div class="detail-resa mt-3">
           <p><strong> Tarifs </strong></p>

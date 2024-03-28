@@ -10,6 +10,11 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "first_name" }%>
+      <%= f.input :photo, as: :file,
+                  label: "Photo",
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "photo" }%>
       <%= f.input :last_name,
                   label: "Nom de famille",
                   required: true,
