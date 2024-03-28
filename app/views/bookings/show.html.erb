@@ -2,7 +2,7 @@
 <div class="container">
   <div class="d-flex flex-row justify-content-between">
     <div class="container-booking-show" style="width: 59%; height: 700px; border-radius: 8px;">
-      <div class="booking-wrapper text-secondary mt-2">
+      <div class="booking-wrapper text-secondary mt-2" id="booking">
         <h2>Votre réservation <%= @booking.space.space_profession %></h2>
         <%= cl_image_tag @booking.space.photos.first.key, crop: :fill, class:"booking-img-chat" %>
         <div class="d-flex flex-row justify-content-between">
