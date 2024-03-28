@@ -13,29 +13,28 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-        <%= link_to "Déposer une annonce", new_space_path, class: "new" %>
+        <button type="button" class="btn btn-outline-primary"><%= link_to "Nouvel espace", new_space_path, class: "new" %></button>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa-regular fa-user avatar fa-2x" style="color: #69F701;"></i>
+              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
             </a>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <%= link_to "Tableau de bord", dashboards_path, class: "dropdown-item" %>
-        <%= link_to "Réservations", bookings_dashboards_path, class: "dropdown-item" %>
-        <%= link_to "Favoris", favoris_dashboards_path, class: "dropdown-item" %>
-        <%= link_to "Gérer mes annonces", owner_dashboards_path, class: "dropdown-item" %>
-        <%= link_to "Profil", infos_dashboards_path, class: "dropdown-item" %>
-        <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-      </div>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Tableau de bord", dashboards_path, class: "dropdown-item" %>
+            <%= link_to "Réservations", bookings_dashboards_path, class: "dropdown-item" %>
+            <%= link_to "Favoris", favoris_dashboards_path, class: "dropdown-item" %>
+            <%= link_to "Gérer mes annonces", owner_dashboards_path, class: "dropdown-item" %>
+            <%= link_to "Profil", infos_dashboards_path, class: "dropdown-item" %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          </div>
           </li>
         <% else %>
         <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-regular fa-user avatar fa-2x" style="color: #69F701;"></i>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown", id="connexion">
+          <i class="fa-regular fa-user avatar fa-2x" style="color: #69F701;"></i>          </a>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown", id="connexion">
             <%= link_to "Connexion/Inscription", new_user_session_path, class: "dropdown-item" %>
-            </div>
-          </li>
+          </div>
+        </li>
         <% end %>
       </ul>
     </div>

@@ -33,6 +33,7 @@ class SpacesController < ApplicationController
     @bookings = @space.bookings
     @booking_date = BookingDate.new
     @selected_days = @space.booking_dates.where(user: current_user).where(booking: nil).pluck(:selected_day).sort.uniq
+    @selected_days_collection = @space.booking_dates.where(user: current_user).where(booking: nil).sort.uniq
     @selected_days_disable = @space.booking_dates.where.not(booking: nil).pluck(:selected_day)
     hash_of_periods = count_periods(@selected_days)
 

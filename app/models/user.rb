@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :booking_dates, through: :bookings
   has_many :bookings
   has_many :messages
+  has_one_attached :photo
 end

@@ -144,10 +144,11 @@
   </div>
 
   <h2 class="mt-4">Mes Espaces</h2>
-    <div class="row">
+   <div class="row">
     <% current_user.spaces.each do |owner_space| %>
-      <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="booking-wrapper text-secondary mt-3">
+    <div id="booking-card-link"class="col-lg-3 col-md-6 col-sm-12">
+      <%= link_to space_path(owner_space, @space) do %>
+        <div class="booking-wrapper text-secondary mt-3" id="espaces">
           <h4><%= owner_space.city %> • <%= owner_space.space_profession %> </h4>
           <%= cl_image_tag owner_space.photos.first.key, crop: :fill, class:"booking-img" %>
           <p><%= owner_space.address %></p>
@@ -155,11 +156,11 @@
             <%= link_to "Modifier", edit_space_path(owner_space), class:"btn btn-outline-dark" %>
             <%= link_to "Effacer", space_path(owner_space), class: "btn btn-outline-danger", remote: true, data: { turbo_confirm: "Êtes vous sur ?", turbo_method: :delete } %>
           </div>
-        </div>
+         </div>
+        <% end %>
       </div>
     <% end %>
-    </div>
+  </div>
 
-  <%= link_to "Espace loueur", dashboards_path %>
   <%= link_to "Déposer une annonce", new_space_path %>
 </div>

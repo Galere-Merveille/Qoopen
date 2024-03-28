@@ -1,0 +1,11 @@
+<div class="detail-resa mt-3">
+  <p><strong> Dates à réserver </strong></p>
+  <% @selected_days_collection.each do |day| %>
+    <div class="d-flex justify-content-between">
+      <p>Le <%= day.selected_day.strftime("%d" + "/" + "%m" + "/" + "%Y") %></p>
+      <%= link_to booking_date_path(day), class: "remove-date-link", remote: true, data: { turbo_method: false, confirm: "Are you sure?", remove_date_target:"link", action: "click->remove-date#remove" }  do %>
+        <i class="fa-solid fa-xmark" style="color: #69F701;"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
