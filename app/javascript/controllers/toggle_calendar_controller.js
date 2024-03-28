@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import datepicker_controller from "./datepicker_controller";
 
 // Connects to data-controller="toggle-calendar"
 export default class extends Controller {
