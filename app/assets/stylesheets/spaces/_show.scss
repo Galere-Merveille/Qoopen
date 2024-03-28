@@ -18,6 +18,15 @@
   padding: 15px;
   border-radius: 8px;
   text-decoration: none;
+  padding-left: 26px;
+  padding-right: 26px;
+}
+#booking {
+  padding-bottom: 5px;
+}
+
+#booking2 {
+  padding-bottom: 5px;
 }
 
 .detail-resa {
@@ -28,7 +37,7 @@
 }
 
 .special-date {
-  background-color: lightblue;
+  background-color: #15df95;
 }
 
 .calendar {
@@ -43,6 +52,7 @@
 
 .form-check-input {
   background-color: $quoogreen;
+
 }
 
 .form-check {

@@ -146,7 +146,7 @@
   <h2 class="mt-4">Mes Espaces</h2>
    <div class="row">
     <% current_user.spaces.each do |owner_space| %>
-    <div id="booking-card-link"class="col-lg-3 col-md-6 col-sm-12">
+    <div id="booking-card-link"class="col-lg-3 col-md-6 col-sm-12 booking">
       <%= link_to space_path(owner_space, @space) do %>
         <div class="booking-wrapper text-secondary mt-3" id="espaces">
           <h4><%= owner_space.city %> • <%= owner_space.space_profession %> </h4>
