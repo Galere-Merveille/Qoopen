@@ -13,16 +13,11 @@
 @import "dashboard/bookings";
 
 body {
-  background: rgb(35, 37, 41);
-  background: linear-gradient(
-    180deg,
-    rgba(35, 37, 41, 1) 11%,
-    rgba(251, 250, 248, 1) 83%
-  );
+  background: #3e3f42;
   color: white;
 }
 
 h1,
 h3 {
-  color: #69f701;
+  color: $quoogreen;
 }

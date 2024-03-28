@@ -1,7 +1,7 @@
 /* CSS */
 .button-4 {
   appearance: none;
-  background-color: #fcdc2a;
+  background-color: #f4f4f4;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
@@ -27,20 +27,20 @@
 }
 
 .button-4:hover {
-  background-color: #fcc82b;
+  background-color: #f4f4f4;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
 .button-4:disabled {
-  background-color: #fcdc2a;
+  background-color: #f4f4f4;
   border-color: rgba(27, 31, 35, 0.15);
   color: #959da5;
   cursor: default;
 }
 
 .button-4:active {
-  background-color: #fcdc2a;
+  background-color: #f4f4f4;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }

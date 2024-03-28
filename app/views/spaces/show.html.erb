@@ -1,10 +1,9 @@
 <!-- Show d'espace -->
-<p style="color: green"><%= notice %></p>
 <div class="container">
-  <%= link_to "<< Retour aux espaces", search_results_path %>
+  <%= link_to "<< Retour aux espaces", search_results_path, class:"mb-2" %>
 
   <div class="container-space">
-    <div class="d-flex justify-content-between align-self-center mt-3">
+    <div class="d-flex justify-content-between align-self-center">
       <div class="adress-show">
         <h1><%= @space.city %></h1>
         <p><%= @space.address %></p>

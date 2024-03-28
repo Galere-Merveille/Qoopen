@@ -156,11 +156,10 @@
             <%= link_to "Modifier", edit_space_path(owner_space), class:"btn btn-outline-dark" %>
             <%= link_to "Effacer", space_path(owner_space), class: "btn btn-outline-danger", remote: true, data: { turbo_confirm: "Êtes vous sur ?", turbo_method: :delete } %>
           </div>
-         </div>
-        <% end %>
+        </div>
+      <% end %>
       </div>
     <% end %>
   </div>
 
-  <%= link_to "Déposer une annonce", new_space_path %>
 </div>
