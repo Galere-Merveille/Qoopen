@@ -29,12 +29,12 @@ class BookingsController < ApplicationController
     booking = Booking.find(params[:id])
     if params[:value] == "accepter"
       booking.accepted!
-      flash[:notice] = "Réservation acceptée"
+      flash[:notice] = "Votre réservation vient d'être acceptée"
     elsif params[:value] == "refuser"
       booking.rejected!
-      flash[:alert] = "Réservation refusée"
+      flash[:alert] = "Réservation d'être refusée"
     else
-      flash[:alert] = "Problème !"
+      flash[:alert] = "Il y a eu un problème !"
     end
     redirect_to owner_dashboards_path
   end
