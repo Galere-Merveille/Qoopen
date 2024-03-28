@@ -1,40 +1,82 @@
 <!-- Show de booking -->
 <div class="container">
   <div class="d-flex flex-row justify-content-between">
-    <div class="container-booking-show" style="width: 49%">
+    <div class="container-booking-show" style="width: 59%; height: 700px; border-radius: 8px;">
       <div class="booking-wrapper text-secondary mt-2">
-        <h4><%= @booking.space.space_profession %> • À partir du <%= @booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></h4>
-        <p><%= @booking.space.address %></p>
+        <h2>Votre réservation <%= @booking.space.space_profession %></h2>
         <%= cl_image_tag @booking.space.photos.first.key, crop: :fill, class:"booking-img-chat" %>
-        <div class="detail-resa">
-          <p><strong>Dates réservées</strong></p>
-          <% @booking.booking_dates.each do |booking_date| %>
-            <p>Le <%= booking_date.selected_day.strftime("%d/%m/%Y") %></p>
-          <% end %>
-        </div>
-        <div class="d-flex justify-content-between mt-2">
-          <p> TOTAL réservation </p>
-          <p><strong> <%= @booking.total_amount.to_i %>€HT </strong></p>
+        <div class="d-flex flex-row justify-content-between">
+          <div class="bloc-resa mt-3 mb-3">
+            <div class="adresse-resa  mb-4">
+              <h4>À partir du <%= @booking.booking_dates.first.selected_day.strftime("%d/%m/%Y") %></h4>
+              <h4><%= @booking.space.address %></h4>
+            </div>
+            <div class="mt-3">
+              <p><strong> Durée de location </strong></p>
+              <div class="d-flex justify-content-between">
+                <p> <%= @number_of_isolated_days %> jours x <%= @booking.space.price_per_day %>€HT</p>
+                <p> <%= @number_of_isolated_days * @booking.space.price_per_day %>€HT </p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p> <%= @number_of_weeks %> semaines x <%= @booking.space.price_per_week %>€HT</p>
+                <p> <%= @number_of_weeks * @booking.space.price_per_week %>€HT </p>
+              </div>
+              <div class="d-flex justify-content-between mb-3">
+                <p> <%= @number_of_months %> mois x <%= @booking.space.price_per_month %>€HT </p>
+                <p> <%= @number_of_months * @booking.space.price_per_month %>€HT </p>
+              </div>
+            </div>
+            <p><strong> Détails prix </strong></p>
+            <div class="d-flex justify-content-between">
+              <p> Total location </p>
+              <p> <%= @booking.total_amount.to_i %>€HT </p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p> Frais de service </p>
+              <p> <%= (@booking.total_amount * 0.10).to_i %>€HT </p>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+              <p><strong> TOTAL </strong></p>
+              <p><strong> <%= (@booking.total_amount + (@booking.total_amount * 0.10)).to_i %>€HT </strong></p>
+            </div>
+            <button class="button-voir mt-3" role="button">Télécharger mon reçu</button>
+          </div>
+
+          <div class="calendrier mt-5">
+            <%= simple_form_for [@booking] do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <%= f.input :status, as: :string,
+                                    required: false,
+                                    disable: true,
+                                    label: "Calendrier des dates réservées",
+                                    input_html: { class: "datepicker", data: { controller: "flatshow",  flatshow_selected_days_value: @selected_days.to_json }, style: "display: none;" } %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="container-chatroom-rounded" style="width: 49%; height: 650px; border-radius: 8px;">
-      <div class="chatroom" data-controller="booking-subscription" data-booking-subscription-booking-id-value="<%= @booking.id %>">
+
+<!-- Messagerie liée au booking -->
+    <div class="container-chatroom-rounded" style="width: 39%; height: 700px; border-radius: 8px;" data-controller="booking-subscription"  data-booking-subscription-booking-id-value="<%= @booking.id %>">
+      <div class="chatroom">
         <div class="messages" data-booking-subscription-target="messages">
+          <h2>Messagerie</h2>
           <% @booking.messages.each do |message| %>
             <%= render "messages/message", message: message %>
           <% end %>
         </div>
       </div>
 
-      <div class="container-input">
+      <div class="container-input align-items-center">
         <%= simple_form_for @message, url: messages_path(booking_id: @booking), method: "post",
           html: {data: {action: "turbo:submit-end->booking-subscription#resetForm"}, class: "d-flex"} do |f|%>
           <%= f.input :content,
             label: false,
-            wrapper_html: {class: "flex-grow-1"}%>
-          <%= f.submit "Send", class: "btn btn-primary" %>
+            wrapper_html: {class: "flex-grow-1 input-wrapper"}
+            %>
+          <%= f.submit "Envoyer", class: "btn btn-primary send-button" %>
         <% end %>
       </div>
     </div>

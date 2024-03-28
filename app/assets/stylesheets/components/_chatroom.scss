@@ -36,6 +36,15 @@
 .container-input {
   margin: 15px;
   align-items: flex-end;
+
+  .input-wrapper {
+    margin-right: 10px; /* Espace entre l'entrée de texte et le bouton */
+  }
+
+  .send-button {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
 }
 
 /* Div Booking */
