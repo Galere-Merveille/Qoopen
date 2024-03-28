@@ -5,7 +5,7 @@
   <div class="row">
     <% current_user.bookings.each do |booking| %>
       <div id="booking-card-link" class="col-lg-4 col-md-6 col-sm-12">
-          <div class="booking-wrapper mt-3">
+          <div class="booking-wrapper mt-3 booking">
             <%= link_to space_booking_path(booking.space, booking) do %>
             <h4><%= booking.space.city %> • <%= booking.space.space_profession %> </h4>
             <%= cl_image_tag booking.space.photos.first.key, crop: :fill, class:"booking-img" %>
@@ -17,7 +17,7 @@
               <p> TOTAL réservation </p>
               <p><strong> <%= booking.total_amount.to_i %>€HT </strong></p>
             </div>
-            <div class="d-flex justify-content-between mt-2">
+            <div class="d-flex justify-content-between">
               <button class="button-4" role="button"><%= booking.status %></button>
             </div>
           </div>
