@@ -13,11 +13,36 @@ Booking.destroy_all
 User.destroy_all
 Space.destroy_all
 puts 'Creating users...'
+
 file_path = Rails.root.join("app", "assets", "images", "toto.jpg") # Assurez-vous de spécifier le chemin correct
 file = File.open(file_path)
 user1 = User.new(email: "toto@gmail.com", password: "azerty")
 user1.photo.attach(io: file, filename: "toto.jpg", content_type: "image/png")
 user1.save!
+
+file_path = Rails.root.join("app", "assets", "images", "sabrino.jpg") # Assurez-vous de spécifier le chemin correct
+file = File.open(file_path)
+user2 = User.new(email: "sabrino@gmail.com", password: "azerty", first_name: "sabrino", company_name: "Sanails")
+user2.photo.attach(io: file, filename: "sabrino.com", content_type: "image/png")
+user2.save!
+
+file_path = Rails.root.join("app", "assets", "images", "claire.jpg") # Assurez-vous de spécifier le chemin correct
+file = File.open(file_path)
+user3 = User.new(email: "claire@gmail.com", password: "azerty", first_name: "claire", company_name: "Luna nails")
+user3.photo.attach(io: file, filename: "claire.jpg", content_type: "image/png")
+user3.save!
+
+file_path = Rails.root.join("app", "assets", "images", "Samantho.jpg") # Assurez-vous de spécifier le chemin correct
+file = File.open(file_path)
+user4 = User.new(email: "samantho@gmail.com", password: "azerty", first_name: "samantho", company_name: "Noy Beauté")
+user4.photo.attach(io: file, filename: "Samantho.jpg", content_type: "image/png")
+user4.save!
+
+file_path = Rails.root.join("app", "assets", "images", "colette.jpg") # Assurez-vous de spécifier le chemin correct
+file = File.open(file_path)
+user5 = User.new(email: "colette@gmail.com", password: "azerty", first_name: "colette", company_name: "Eclat divin")
+user5.photo.attach(io: file, filename: "colette.jpg", content_type: "image/png")
+user5.save!
 
 url_image = ["https://res.cloudinary.com/planity/image/upload/q_auto,f_auto,w_1200,h_630/kcn2k8ivugyfg2uiqr6o",
   "https://www.beautedailleurs67.fr/img/cms/institut-beaute-ailleurs-soufflenheim-acceuil.jpg",
