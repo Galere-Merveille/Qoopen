@@ -14,6 +14,7 @@ User.destroy_all
 Space.destroy_all
 puts 'Creating users...'
 
+
 file_path = Rails.root.join("app", "assets", "images", "toto.jpg") # Assurez-vous de spécifier le chemin correct
 file = File.open(file_path)
 user1 = User.new(email: "toto@gmail.com", password: "azerty")
